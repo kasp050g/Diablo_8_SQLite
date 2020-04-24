@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Diablo_8_SQLite;
 
 namespace MonogameFramework
 {
@@ -23,12 +24,12 @@ namespace MonogameFramework
         }
         #endregion
 
-        public MonogameSystem monogameSystem;
+        public GameWorld gameWorld;
         public bool isMouseVisible;
 
         public void IsMouseVisible(bool showMouse)
         {
-            monogameSystem.IsMouseVisible = showMouse;
+            gameWorld.IsMouseVisible = showMouse;
             isMouseVisible = showMouse;
         }
     }

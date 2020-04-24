@@ -12,11 +12,14 @@ namespace Diablo_8_SQLite
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Global global = new Global();
 
         public GameWorld()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            GraphicsSetting.Instance.SetGraphics(graphics);
+            MouseSettings.Instance.gameWorld = this;
         }
 
         /// <summary>
@@ -30,6 +33,7 @@ namespace Diablo_8_SQLite
             // TODO: Add your initialization logic here
 
             base.Initialize();
+            global.Initialize();
         }
 
         /// <summary>
@@ -40,7 +44,7 @@ namespace Diablo_8_SQLite
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            global.LoadContent(Content);
             // TODO: use this.Content to load your game content here
         }
 
@@ -63,6 +67,7 @@ namespace Diablo_8_SQLite
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            global.Update(gameTime);
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -76,6 +81,7 @@ namespace Diablo_8_SQLite
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            global.Draw(spriteBatch);
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);

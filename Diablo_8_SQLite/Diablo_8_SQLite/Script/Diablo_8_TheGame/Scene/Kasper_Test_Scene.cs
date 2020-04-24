@@ -18,6 +18,12 @@ namespace Diablo_8_SQLite
         public override void Initialize()
         {
             base.Initialize();
+
+
+
+
+
+            Instantiate(BuildPlayerTest.Instance.buildplayer());
         }
 
         public override void OnSwitchAwayFromThisScene()

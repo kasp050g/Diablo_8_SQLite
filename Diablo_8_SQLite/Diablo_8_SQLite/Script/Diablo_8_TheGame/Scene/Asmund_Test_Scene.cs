@@ -8,6 +8,7 @@ using MonogameFramework;
 
 namespace Diablo_8_SQLite
 {
+    //Asmund was here.
     public class Asmund_Test_Scene : Scene
     {
         public override void Draw(SpriteBatch spriteBatch)

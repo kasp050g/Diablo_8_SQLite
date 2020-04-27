@@ -12,7 +12,6 @@ namespace MonogameFramework
     {
         #region Fields
         private Texture2D sprite;
-        //private Vector2 origin = new Vector2(0, 0);
         private Color color = Color.White;
         private SpriteEffects spriteEffects = SpriteEffects.None;
         private float layerDepth = 0;
@@ -22,7 +21,6 @@ namespace MonogameFramework
 
         #region Properties 
         public Texture2D Sprite { get => sprite; set => sprite = value; }
-        //public Vector2 Origin { get => origin; set => origin = value; }
         public Color Color { get => color; set => color = value; }
         public SpriteEffects SpriteEffects { get => spriteEffects; set => spriteEffects = value; }
         public float LayerDepth { get => layerDepth; set => layerDepth = value; }
@@ -33,7 +31,7 @@ namespace MonogameFramework
         #region Constructors  
         public SpriteRenderer()
         {
-            if(Sprite == null)
+            if (Sprite == null)
             {
                 Sprite = SpriteContainer.Instance.sprite["Pixel"];
             }
@@ -50,14 +48,14 @@ namespace MonogameFramework
             SetSprite(spriteName);
         }
 
-        public SpriteRenderer(string spriteName, OriginPositionEnum originPositionEnum,float layerDepth)
+        public SpriteRenderer(string spriteName, OriginPositionEnum originPositionEnum, float layerDepth)
         {
             this.layerDepth = layerDepth;
             this.OriginPositionEnum = originPositionEnum;
             SetSprite(spriteName);
         }
 
-        public SpriteRenderer(string spriteName, OriginPositionEnum originPositionEnum,float layerDepth,Color color)
+        public SpriteRenderer(string spriteName, OriginPositionEnum originPositionEnum, float layerDepth, Color color)
         {
             this.color = color;
             this.layerDepth = layerDepth;
@@ -70,15 +68,15 @@ namespace MonogameFramework
         public override void Awake()
         {
             base.Awake();
-            UpdateOrigin();
+            Helper.UpdateOrigin(GameObject, sprite, originPositionEnum);
         }
         public void SetSprite(string spriteName)
         {
-            sprite = SpriteContainer.Instance.sprite[spriteName];            
+            sprite = SpriteContainer.Instance.sprite[spriteName];
         }
 
         public override void Draw(SpriteBatch spriteBatch)
-        {            
+        {
             spriteBatch.Draw(
                 // Texture2D
                 this.Sprite,
@@ -114,66 +112,8 @@ namespace MonogameFramework
         public void SetOrigin(OriginPositionEnum originPositionEnum)
         {
             this.originPositionEnum = originPositionEnum;
-            UpdateOrigin();
+            Helper.UpdateOrigin(GameObject, sprite, originPositionEnum);
         }
-
-        public void UpdateOrigin()
-        {
-            // --- Top ---
-
-            // top left
-            if (OriginPositionEnum.TopLeft == originPositionEnum)
-            {
-                this.GameObject.Transform.Origin = new Vector2(0, 0);
-            }
-            // top mid
-            if (OriginPositionEnum.TopMid == originPositionEnum)
-            {
-                this.GameObject.Transform.Origin = new Vector2((float)sprite.Width / 2f, 0);
-            }
-            // top rigth
-            if (OriginPositionEnum.TopRight == originPositionEnum)
-            {
-                this.GameObject.Transform.Origin = new Vector2((float)sprite.Width, 0);
-            }
-
-            // --- Mid ---
-
-            // mid left
-            if (OriginPositionEnum.MidLeft == originPositionEnum)
-            {
-                this.GameObject.Transform.Origin = new Vector2(0, (float)sprite.Height / 2f);
-            }
-            // mid 
-            if (OriginPositionEnum.Mid == originPositionEnum)
-            {
-                this.GameObject.Transform.Origin = new Vector2((float)sprite.Width / 2f, (float)sprite.Height / 2f);
-            }
-            // mid rigth
-            if (OriginPositionEnum.MidRight == originPositionEnum)
-            {
-                this.GameObject.Transform.Origin = new Vector2((float)sprite.Width, (float)sprite.Height / 2f);
-            }
-
-            // --- Bottom ---
-
-            // bottom left
-            if (OriginPositionEnum.BottomLeft == originPositionEnum)
-            {
-                this.GameObject.Transform.Origin = new Vector2(0, (float)sprite.Height);
-            }
-            // bottom mid
-            if (OriginPositionEnum.BottomMid == originPositionEnum)
-            {
-                this.GameObject.Transform.Origin = new Vector2((float)sprite.Width / 2f, (float)sprite.Height);
-            }
-            // bottom rigth
-            if (OriginPositionEnum.BottomRight == originPositionEnum)
-            {
-                this.GameObject.Transform.Origin = new Vector2((float)sprite.Width, (float)sprite.Height);
-            }
-        }
-
 
         #endregion
     }

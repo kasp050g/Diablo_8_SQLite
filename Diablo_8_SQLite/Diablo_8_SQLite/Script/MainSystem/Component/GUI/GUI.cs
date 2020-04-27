@@ -1,35 +1,43 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace MonogameFramework
 {
-    public abstract class GUI : Component
+    public class GUI : Component
     {
         #region Fields
-        private Texture2D sprite;
-        private Color color = Color.White;
-        private SpriteEffects spriteEffects = SpriteEffects.None;
-        private float layerDepth = 0;
-        private OriginPositionEnum originPositionEnum = OriginPositionEnum.TopLeft;
-        private Vector2 offSet = new Vector2(0, 0);
         private bool blockGUI = false;
         private bool isWorldUI = false;
+        private bool mouseIsHovering = false;
+        private SpriteRenderer spriteRenderer;
         #endregion
 
         #region Properties
-        public Texture2D Sprite { get => sprite; set => sprite = value; }
-        public Color Color { get => color; set => color = value; }
-        public SpriteEffects SpriteEffects { get => spriteEffects; set => spriteEffects = value; }
-        public float LayerDepth { get => layerDepth; set => layerDepth = value; }
-        public OriginPositionEnum OriginPositionEnum { get => originPositionEnum; set => originPositionEnum = value; }
-        public Vector2 OffSet { get => offSet; set => offSet = value; }
         public bool BlockGUI { get => blockGUI; set => blockGUI = value; }
         public bool IsWorldUI { get => isWorldUI; set => isWorldUI = value; }
+        public bool MouseIsHovering { get => mouseIsHovering; set => mouseIsHovering = value; }
+        public Vector2 SceneSize { get { return GraphicsSetting.Instance.ScreenSize; } }
+        public SpriteRenderer SpriteRenderer { get => spriteRenderer; set => spriteRenderer = value; }
+
+        public virtual Rectangle GUImouseBlockCollision
+        {
+            get
+            {
+                // returns a new rectangle based on the position, scale, sprite width and height.
+                return new Rectangle(
+                    (int)this.GameObject.Transform.Position.X - (int)(this.GameObject.Transform.Origin.X * this.GameObject.Transform.Scale.X),
+                    (int)this.GameObject.Transform.Position.Y - (int)(this.GameObject.Transform.Origin.Y * this.GameObject.Transform.Scale.Y),
+                    (int)(this.SpriteRenderer.Sprite.Width * this.GameObject.Transform.Scale.X),
+                    (int)(this.SpriteRenderer.Sprite.Height * this.GameObject.Transform.Scale.Y)
+                    );
+            }
+        }
+
         #endregion
 
         #region Constructors
@@ -52,6 +60,7 @@ namespace MonogameFramework
         public override void Update()
         {
             base.Update();
+            mouseIsHovering = false;
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -62,7 +71,22 @@ namespace MonogameFramework
         public override void Destroy()
         {
             base.Destroy();
+            if (GameObject.MyScene.UIColliders.Contains(this))
+                GameObject.MyScene.UIColliders.Remove(this);
         }
+
+        public void OnCollisionEnter(Rectangle other)
+        {
+            if (BlockGUI)
+            {
+                if (GUImouseBlockCollision.Intersects(other))
+                {
+                    GameObject.MyScene.IsMouseOverUI = true;
+                    mouseIsHovering = true;
+                }
+            }
+        }
+
         #endregion
     }
 }

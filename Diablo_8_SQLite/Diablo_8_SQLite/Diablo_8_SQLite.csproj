@@ -62,8 +62,10 @@
     <Compile Include="Script\MainSystem\Cameras\CameraMove.cs" />
     <Compile Include="Script\MainSystem\Component\Collider.cs" />
     <Compile Include="Script\MainSystem\Component\Component.cs" />
+    <Compile Include="Script\MainSystem\Component\GUI\ButtonGUI.cs" />
     <Compile Include="Script\MainSystem\Component\GUI\GUI.cs" />
     <Compile Include="Script\MainSystem\Component\GUI\ImageGUI.cs" />
+    <Compile Include="Script\MainSystem\Component\GUI\TextGUI.cs" />
     <Compile Include="Script\MainSystem\Component\SpriteRenderer.cs" />
     <Compile Include="Script\MainSystem\Enum\InputStateEnum.cs" />
     <Compile Include="Script\MainSystem\Enum\MyInputStateEnum.cs" />
@@ -78,7 +80,6 @@
     <Compile Include="Script\MainSystem\Scene\SceneController.cs" />
     <Compile Include="Script\MainSystem\Settings\GraphicsSetting.cs" />
     <Compile Include="Script\MainSystem\Settings\MouseSettings.cs" />
-    <Compile Include="Script\MainSystem\Singletons\Singleton.cs" />
     <Compile Include="Script\MainSystem\Static\Input.cs" />
     <Compile Include="Script\MainSystem\Static\Time.cs" />
   </ItemGroup>

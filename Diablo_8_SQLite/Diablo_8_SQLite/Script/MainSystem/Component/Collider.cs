@@ -141,6 +141,8 @@ namespace MonogameFramework
         public override void Destroy()
         {
             base.Destroy();
+            if (GameObject.MyScene.Colliders.Contains(this))
+                GameObject.MyScene.Colliders.Remove(this);
         }
         #endregion
     }

@@ -48,6 +48,12 @@ namespace MonogameFramework
                 Name = "Lukas"
             };
             Scenes.Add(lukas_Test_Scene);
+
+            StartScene startScene = new StartScene()
+            {
+                Name = "StartScene"
+            };
+            Scenes.Add(startScene);
         }
     }
 }

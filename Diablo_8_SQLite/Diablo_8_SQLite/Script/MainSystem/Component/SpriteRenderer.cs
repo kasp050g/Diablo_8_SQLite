@@ -37,6 +37,11 @@ namespace MonogameFramework
             }
         }
 
+        public SpriteRenderer(Texture2D spriteName)
+        {
+            sprite = spriteName;
+        }
+
         public SpriteRenderer(string spriteName)
         {
             SetSprite(spriteName);

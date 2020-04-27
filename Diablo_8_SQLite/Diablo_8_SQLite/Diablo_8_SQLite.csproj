@@ -82,13 +82,37 @@
     <Compile Include="Script\MainSystem\Settings\MouseSettings.cs" />
     <Compile Include="Script\MainSystem\Static\Input.cs" />
     <Compile Include="Script\MainSystem\Static\Time.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\DBCommands\Commander.cs" />
+    <Compile Include="Script\SQLiteFramework\ExtensionMethods\BoolExtension.cs" />
+    <Compile Include="Script\SQLiteFramework\ExtensionMethods\DictionaryExtension.cs" />
+    <Compile Include="Script\SQLiteFramework\ExtensionMethods\ITableExtension.cs" />
+    <Compile Include="Script\SQLiteFramework\ExtensionMethods\StringExtension.cs" />
+    <Compile Include="Script\SQLiteFramework\ExtensionMethods\TypeExtension.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\DBCommands\DeleteRowCommand.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\DBCommands\FindRowCommand.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\DBCommands\InsertRowCommand.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\DBCommands\TableRenameCommand.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\Global\Mapper.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\Global\RowElement.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\Global\SQLiteDatabaseProvider.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\Global\Table.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\Repositories\Repository.cs" />
+    <Compile Include="Script\SQLiteFramework\Generics\Singleton.cs" />
     <Compile Include="Script\SQLiteFramework\Interfaces\CommandPattern\ICommand.cs" />
+    <Compile Include="Script\SQLiteFramework\Interfaces\CommandPattern\ICommandTable.cs" />
+    <Compile Include="Script\SQLiteFramework\Interfaces\IDBProvider.cs" />
+    <Compile Include="Script\SQLiteFramework\Interfaces\IMapper.cs" />
+    <Compile Include="Script\SQLiteFramework\Interfaces\IRepository.cs" />
+    <Compile Include="Script\SQLiteFramework\Interfaces\IRowElement.cs" />
+    <Compile Include="Script\SQLiteFramework\Interfaces\ITable.cs" />
+    <Compile Include="Script\SQLiteFramework\TableContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.112.1, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.112.2\lib\net40\System.Data.SQLite.dll</HintPath>
     </Reference>

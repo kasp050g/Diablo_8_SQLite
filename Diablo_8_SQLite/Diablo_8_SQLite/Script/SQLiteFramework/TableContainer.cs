@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SQLiteFramework.Interfaces
+namespace Diablo_8_SQLite.Script.SQLiteFramework
 {
-    interface ICommand
+    class TableContainer
     {
-        void Execute();
     }
 }

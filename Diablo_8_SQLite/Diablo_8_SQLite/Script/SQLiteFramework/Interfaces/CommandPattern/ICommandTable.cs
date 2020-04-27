@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SQLiteFramework.Interfaces
 {
-    interface ICommand
+    interface ICommandTable : ICommand
     {
-        void Execute();
+        ITable[] ExecuteOnTables { get; set; }
     }
 }

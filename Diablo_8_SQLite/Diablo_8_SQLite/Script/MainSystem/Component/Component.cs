@@ -46,6 +46,25 @@ namespace MonogameFramework
         {
 
         }
+
+        #region Instantiate And Destroy
+        /// <summary>
+        /// Will instantiate a new gameObject in to the game.
+        /// </summary>
+        /// <param name="gameObject">The GameObject to be add to game.</param>
+        public void Instantiate(GameObject gameObject)
+        {
+            this.GameObject.MyScene.Instantiate(gameObject);
+        }
+        /// <summary>
+        /// Will destroy this gameobject
+        /// </summary>
+        /// <param name="gameObject">destroy this gameobject</param>
+        public void Destroy(GameObject gameObject)
+        {
+            this.GameObject.MyScene.Destroy(gameObject);
+        }
+        #endregion
         #endregion
     }
 }

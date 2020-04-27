@@ -56,7 +56,7 @@ namespace MonogameFramework
             base.Update();
             Animate();
             sr.Sprite = currentSprite;
-            sr.UpdateOrigin();
+            Helper.UpdateOrigin(GameObject, sr.Sprite, sr.OriginPositionEnum);
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -22,6 +22,7 @@ namespace MonogameFramework
         protected List<GameObject> guis = new List<GameObject>();
 
         public List<Collider> Colliders { get; set; } = new List<Collider>();
+        public List<GUI> UIColliders { get; set; } = new List<GUI>();
 
         protected List<GameObject> gameObjectsToBeCreated = new List<GameObject>();
         protected List<GameObject> gameObjectsToBeDestroyed = new List<GameObject>();
@@ -92,7 +93,10 @@ namespace MonogameFramework
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, transformMatrix: SceneController.Instance.Camera.Transform);
             foreach (GameObject item in gameObjects)
             {
-                item.Draw(spriteBatch);
+                if (item.IsActive)
+                {
+                    item.Draw(spriteBatch);
+                }
             }
             spriteBatch.End();
 
@@ -100,24 +104,26 @@ namespace MonogameFramework
             spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
             foreach (GameObject item in guis)
             {
-                item.Draw(spriteBatch);
+                if (item.IsActive)
+                {
+                    item.Draw(spriteBatch);
+                }
             }
             spriteBatch.End();
         }
 
 
-
+        // TODO: is extremely poorly optimised: need to find a better way to check if UI.
         public void CheckForGUI()
         {
             MouseState currentMouse = Mouse.GetState();
             Rectangle mouseRectangle = new Rectangle(currentMouse.X, currentMouse.Y, 1, 1);
 
-            foreach (GameObject x in guis)
+            GUI[] tmpColliders = UIColliders.ToArray();
+
+            for (int i = 0; i < tmpColliders.Length; i++)
             {
-                //if ((x is GUI) && mouseRectangle.Intersects((x as GUI).GUImouseBlockCollision) && x.IsActive == true)
-                //{
-                //    IsMouseOverUI = true;
-                //}
+                tmpColliders[i].OnCollisionEnter(mouseRectangle);
             }
         }
 
@@ -133,7 +139,7 @@ namespace MonogameFramework
                 }
             }
         }
-        
+
 
         #region Instantiate And Destroy
         /// <summary>
@@ -167,19 +173,46 @@ namespace MonogameFramework
         {
             if (this.gameObjectsToBeCreated.Count > 0)
             {
-                foreach (GameObject go in gameObjectsToBeCreated)
+                List<GameObject> awakeCall = new List<GameObject>();
+                awakeCall.AddRange(this.gameObjectsToBeCreated);
+                this.gameObjectsToBeCreated.Clear();
+
+                foreach (GameObject go in awakeCall)
                 {
+                    go.MyScene = this;
                     go.Awake();
                     go.Start();
-                    gameObjects.Add(go);
 
-                    if(go.GetComponent<Collider>() != null)
+                    bool gameobjectIsUI = false;
+                    foreach (Component x in go.Components.Values)
+                    {
+                        if (x is GUI && (x as GUI).IsWorldUI == false)
+                        {
+                            gameobjectIsUI = true;
+                        }
+                    }
+
+                    if (gameobjectIsUI == true)
+                    {
+                        guis.Add(go);
+                    }
+                    else
+                    {
+                        gameObjects.Add(go);
+                    }
+
+                    if (go.GetComponent<Collider>() != null)
                     {
                         Colliders.Add(go.GetComponent<Collider>());
                     }
-                }
 
-                gameObjectsToBeCreated.Clear();
+                    if (go.GetComponent<GUI>() != null)
+                    {
+                        GUI gui = go.GetComponent<GUI>();
+                        if (gui.BlockGUI)
+                            UIColliders.Add(gui);
+                    }
+                }
             }
         }
         /// <summary>
@@ -190,7 +223,26 @@ namespace MonogameFramework
         {
             if (this.gameObjectsToBeDestroyed.Count > 0)
             {
-                
+                List<GameObject> destroyCall = new List<GameObject>();
+                destroyCall.AddRange(this.gameObjectsToBeDestroyed);
+                this.gameObjectsToBeDestroyed.Clear();
+
+                foreach (GameObject go in destroyCall)
+                {
+                    foreach (Component component in go.Components.Values)
+                    {
+                        component.Destroy();
+                    }
+
+                    if (gameObjects.Contains(go))
+                    {
+                        gameObjects.Remove(go);
+                    }
+                    else if (guis.Contains(go))
+                    {
+                        guis.Remove(go);
+                    }
+                }
             }
         }
         #endregion

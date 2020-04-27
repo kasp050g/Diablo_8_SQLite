@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace MonogameFramework
 {
@@ -13,79 +13,59 @@ namespace MonogameFramework
         #region Fields
         #endregion
 
-        #region Methods 
+        #region Properties
         #endregion
 
-        #region Constructors 
-        public ImageGUI(Texture2D sprite, Vector2 position, float layerDepth, OriginPositionEnum originPosition)
+        #region Constructors
+        public ImageGUI()
         {
-            this.Sprite = sprite;
-            this.GameObject.Transform.Position = position;
-            this.LayerDepth = layerDepth;
-            this.OriginPositionEnum = originPosition;
+
         }
-        public ImageGUI(Texture2D sprite, Vector2 position, float layerDepth, OriginPositionEnum originPosition, bool isWorldUI)
+
+        public ImageGUI(SpriteRenderer spriteRenderer,bool isWorldUI,bool blockUI)
         {
-            this.Sprite = sprite;
-            this.GameObject.Transform.Position = position;
-            this.LayerDepth = layerDepth;
-            this.OriginPositionEnum = originPosition;
+            this.SpriteRenderer = spriteRenderer;
             this.IsWorldUI = isWorldUI;
+            this.BlockGUI = blockUI;
         }
-        public ImageGUI(Texture2D sprite, Vector2 position, float layerDepth, OriginPositionEnum originPosition, bool isWorldUI, Color color)
+        public ImageGUI(SpriteRenderer spriteRenderer, bool isWorldUI, bool blockUI,Color color,OriginPositionEnum originPositionEnum)
         {
-            this.Sprite = sprite;
-            this.GameObject.Transform.Position = position;
-            this.LayerDepth = layerDepth;
-            this.OriginPositionEnum = originPosition;
+            this.SpriteRenderer = spriteRenderer;
             this.IsWorldUI = isWorldUI;
-            this.Color = color;
+            this.BlockGUI = blockUI;
+            this.SpriteRenderer.Color = color;
+            this.SpriteRenderer.OriginPositionEnum = originPositionEnum;
         }
         #endregion
 
         #region Methods 
         public override void Awake()
         {
-
+            if(this.SpriteRenderer == null)
+            {
+                this.SpriteRenderer = GameObject.GetComponent<SpriteRenderer>();
+            }
+            base.Awake();
         }
 
         public override void Start()
         {
-
+            base.Start();
         }
 
         public override void Update()
         {
-
+            base.Update();
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(
-                // Texture2D
-                this.Sprite,
-                // Postion
-                this.GameObject.Transform.Position + OffSet,
-                // Source Rectangle
-                null,
-                // Color
-                this.Color,
-                // Rotation
-                MathHelper.ToRadians(this.GameObject.Transform.Rotation),
-                // Origin
-                this.GameObject.Transform.Origin,
-                // Scale
-                this.GameObject.Transform.Scale,
-                // SpriteEffects
-                this.SpriteEffects,
-                // LayerDepth
-                this.LayerDepth
-            );
+            base.Draw(spriteBatch);
         }
 
         public override void Destroy()
         {
-
+            base.Destroy();
         }
         #endregion
     }

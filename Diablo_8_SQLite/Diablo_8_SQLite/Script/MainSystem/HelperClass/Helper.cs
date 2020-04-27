@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,6 +87,66 @@ namespace MonogameFramework
             {
                 return 0;
             }
+        }
+
+        public static void UpdateOrigin(GameObject go,Texture2D sprite, OriginPositionEnum originPositionEnum)
+        {
+            // --- Top ---
+
+            // top left
+            if (OriginPositionEnum.TopLeft == originPositionEnum)
+            {
+                go.Transform.Origin = new Vector2(0, 0);
+            }
+            // top mid
+            else if (OriginPositionEnum.TopMid == originPositionEnum)
+            {
+                go.Transform.Origin = new Vector2((float)sprite.Width / 2f, 0);
+            }
+            // top rigth
+            else if (OriginPositionEnum.TopRight == originPositionEnum)
+            {
+                go.Transform.Origin = new Vector2((float)sprite.Width, 0);
+            }
+
+            // --- Mid ---
+
+            // mid left
+            else if (OriginPositionEnum.MidLeft == originPositionEnum)
+            {
+                go.Transform.Origin = new Vector2(0, (float)sprite.Height / 2f);
+            }
+            // mid 
+            else if (OriginPositionEnum.Mid == originPositionEnum)
+            {
+                go.Transform.Origin = new Vector2((float)sprite.Width / 2f, (float)sprite.Height / 2f);
+            }
+            // mid rigth
+            else if (OriginPositionEnum.MidRight == originPositionEnum)
+            {
+                go.Transform.Origin = new Vector2((float)sprite.Width, (float)sprite.Height / 2f);
+            }
+
+            // --- Bottom ---
+
+            // bottom left
+            else if (OriginPositionEnum.BottomLeft == originPositionEnum)
+            {
+                go.Transform.Origin = new Vector2(0, (float)sprite.Height);
+            }
+            // bottom mid
+            else if (OriginPositionEnum.BottomMid == originPositionEnum)
+            {
+                go.Transform.Origin = new Vector2((float)sprite.Width / 2f, (float)sprite.Height);
+            }
+            // bottom rigth
+            else if (OriginPositionEnum.BottomRight == originPositionEnum)
+            {
+                go.Transform.Origin = new Vector2((float)sprite.Width, (float)sprite.Height);
+            }
+
+            //Console.WriteLine("Error: in |Class: Helper|Method: UpdateOrigin| dint work as it neeed to");
+            //go.Transform.Origin = new Vector2(0,0);
         }
     }
 }

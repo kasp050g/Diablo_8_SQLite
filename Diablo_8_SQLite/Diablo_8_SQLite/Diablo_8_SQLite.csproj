@@ -82,6 +82,7 @@
     <Compile Include="Script\MainSystem\Settings\MouseSettings.cs" />
     <Compile Include="Script\MainSystem\Static\Input.cs" />
     <Compile Include="Script\MainSystem\Static\Time.cs" />
+    <Compile Include="Script\SQLiteFramework\Interfaces\CommandPattern\ICommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

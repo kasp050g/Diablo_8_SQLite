@@ -59,8 +59,7 @@ namespace MonogameFramework
 
         public override void Update()
         {
-            base.Update();
-            mouseIsHovering = false;
+            base.Update();            
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -71,6 +70,7 @@ namespace MonogameFramework
         public override void Destroy()
         {
             base.Destroy();
+            mouseIsHovering = false;
             if (GameObject.MyScene.UIColliders.Contains(this))
                 GameObject.MyScene.UIColliders.Remove(this);
         }
@@ -79,6 +79,7 @@ namespace MonogameFramework
         {
             if (BlockGUI)
             {
+                mouseIsHovering = false;
                 if (GUImouseBlockCollision.Intersects(other))
                 {
                     GameObject.MyScene.IsMouseOverUI = true;

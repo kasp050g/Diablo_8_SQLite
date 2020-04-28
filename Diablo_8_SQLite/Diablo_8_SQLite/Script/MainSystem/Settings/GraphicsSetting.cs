@@ -26,6 +26,7 @@ namespace MonogameFramework
 
         public GraphicsDeviceManager Graphics { get; private set; }
         public Vector2 ScreenSize { get; set; } = new Vector2(1280, 720);
+        public Vector2 ScreenScale { get { return new Vector2(1280 / ScreenSize.X, 720 / ScreenSize.Y); } }
         public Vector2 GameZome { get; set; } = new Vector2(1, 1);
 
 

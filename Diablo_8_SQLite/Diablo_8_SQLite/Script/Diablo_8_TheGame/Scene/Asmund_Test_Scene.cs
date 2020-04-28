@@ -35,37 +35,74 @@ namespace Diablo_8_SQLite
 
         public override void Update()
         {
+            UpdateDescription();
             base.Update();
         }
         private void AsmundTest()
         {
-            GameObject go = new GameObject();
-            //go.AddComponent<SpriteRenderer>();
-
-            SpriteRenderer sp = new SpriteRenderer("Pixel", OriginPositionEnum.TopMid, 1, Color.White);
-            go.AddComponent<SpriteRenderer>(sp);
-
-            go.Transform.Scale = new Vector2(100, GraphicsSetting.Instance.ScreenSize.Y);
-            go.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X/2, 0);
-
-            ImageGUI bob = go.AddComponent<ImageGUI>(new ImageGUI(sp, false, false));
             
-            Instantiate(go);
+            ////go.AddComponent<SpriteRenderer>();
 
-            GameObject button = new GameObject();
-            button.AddComponent<SpriteRenderer>();
-            ButtonGUI btn1 = button.AddComponent<ButtonGUI>(new ButtonGUI(SpriteContainer.Instance.sprite["Pixel"], SpriteContainer.Instance.sprite["Pixel"], Color.White, Color.Green));
-            btn1.OnClick = () => { go.IsActive = !go.IsActive; };
-            button.Transform.Scale = new Vector2(300, 300);
+            GameObject background = new GameObject();
+            SpriteRenderer sp = new SpriteRenderer("TalentsBackground", OriginPositionEnum.Mid, 0, Color.White);
+            background.AddComponent<SpriteRenderer>(sp);
+            background.Transform.Position = new Vector2(0,0);
+            //go.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X/2, 0);
 
-            Instantiate(button);
+            //ImageGUI bob = go.AddComponent<ImageGUI>(new ImageGUI(sp, false, false));
+            
+            Instantiate(background);
 
+            MakeSkill("Skill2", new Vector2(100, 100));
             MouseSettings.Instance.IsMouseVisible(true);
             //go.AddComponent<SpriteRenderer>(new SpriteRenderer("Pixel", OriginPositionEnum.Mid, 1, Color.White));
-
-
             //SpriteRenderer lol = go.GetComponent<SpriteRenderer>();
 
+        }
+        List<GameObject> descriptionCollection = new List<GameObject>();
+        private GameObject MakeSkill(string sprite, Vector2 pos)
+        {
+            GameObject button10 = new GameObject();
+            button10.AddComponent<SpriteRenderer>();
+            ButtonGUI btn10 = button10.AddComponent<ButtonGUI>(new ButtonGUI(SpriteContainer.Instance.sprite[sprite], SpriteContainer.Instance.sprite[sprite], Color.White, Color.Green));
+            btn10.OnClick = () => { button10.IsActive = !button10.IsActive; };
+            button10.Transform.Scale = new Vector2(1, 1);
+            button10.Transform.Position = pos;
+            Instantiate(button10);
+
+            GameObject descBox = new GameObject();
+            descBox.Transform.Position = pos;
+            descBox.MyParent = button10;
+            GameObject overlay = new GameObject();
+            overlay.AddComponent<SpriteRenderer>();
+            ImageGUI image = new ImageGUI(overlay.GetComponent<SpriteRenderer>(), false, false);
+            overlay.AddComponent<ImageGUI>(image);
+            overlay.Transform.Scale = new Vector2(200, 200);
+            overlay.Transform.Position = pos;
+            overlay.MyParent = descBox;
+            GameObject textBox = new GameObject();
+            TextGUI text = new TextGUI(SpriteContainer.Instance.normalFont, Color.Black, new Vector2(1,1),"SuperAttack");
+            textBox.Transform.Position = pos;
+            textBox.AddComponent<TextGUI>(text);
+            textBox.MyParent = descBox;
+
+            Instantiate(descBox);
+            Instantiate(overlay);
+            Instantiate(textBox);
+
+
+            descriptionCollection.Add(descBox);
+
+
+            return button10;
+        }
+
+        private void UpdateDescription()
+        {
+            foreach (GameObject item in descriptionCollection)
+            {
+                item.IsActive = item.MyParent.GetComponent<ButtonGUI>().MouseIsHovering;
+            }
         }
     }
 }

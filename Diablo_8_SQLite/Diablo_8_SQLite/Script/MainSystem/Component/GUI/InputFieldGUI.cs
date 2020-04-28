@@ -152,8 +152,12 @@ namespace MonogameFramework
                     {
                         if(key != Keys.LeftShift && key != Keys.RightShift)
                         {
-                            text += key.ToString();
-                            currentInputCooldown = inputCooldown;
+                            string keyText = key.ToString().ToLower();
+                            if (AcceptableCharacters(ref keyText))
+                            {
+                                text += keyText;
+                                currentInputCooldown = inputCooldown;
+                            }
                         }
                     }                    
                 }
@@ -167,6 +171,107 @@ namespace MonogameFramework
                 }
             }
         }
+
+        private bool AcceptableCharacters(ref string keyText)
+        {
+            switch (keyText)
+            {
+                case "q":
+                    return true;
+                case "w":
+                    return true;
+                case "e":
+                    return true;
+                case "r":
+                    return true;
+                case "t":
+                    return true;
+                case "y":
+                    return true;
+                case "u":
+                    return true;
+                case "i":
+                    return true;
+                case "o":
+                    return true;
+                case "p":
+                    return true;
+                case "å":
+                    return true;
+                case "a":
+                    return true;
+                case "s":
+                    return true;
+                case "d":
+                    return true;
+                case "f":
+                    return true;
+                case "g":
+                    return true;
+                case "h":
+                    return true;
+                case "j":
+                    return true;
+                case "k":
+                    return true;
+                case "l":
+                    return true;
+                case "æ":
+                    return true;
+                case "ø":
+                    return true;
+                case "z":
+                    return true;
+                case "x":
+                    return true;
+                case "c":
+                    return true;
+                case "v":
+                    return true;
+                case "b":
+                    return true;
+                case "n":
+                    return true;
+                case "m":
+                    return true;
+
+                case "d1":
+                    keyText = "1";
+                    return true;
+                case "d2":
+                    keyText = "2";
+                    return true;
+                case "d3":
+                    keyText = "3";
+                    return true;
+                case "d4":
+                    keyText = "4";
+                    return true;
+                case "d5":
+                    keyText = "5";
+                    return true;
+                case "d6":
+                    keyText = "6";
+                    return true;
+                case "d7":
+                    keyText = "7";
+                    return true;
+                case "d8":
+                    keyText = "8";
+                    return true;
+                case "d9":
+                    keyText = "9";
+                    return true;
+                case "d0":
+                    keyText = "0";
+                    return true;
+                default:
+                    break;
+            }
+            return false;
+        }
+
+
         #endregion
     }
 }

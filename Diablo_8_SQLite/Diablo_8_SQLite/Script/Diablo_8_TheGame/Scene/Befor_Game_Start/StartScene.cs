@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Diablo_8_SQLite;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonogameFramework;
 using System;
@@ -11,6 +12,7 @@ namespace Diablo_8_SQLite
 {
     public class StartScene : Scene
     {
+        LoginGameObject loginGame = new LoginGameObject();
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
@@ -20,7 +22,8 @@ namespace Diablo_8_SQLite
         {
             base.Initialize();
             MouseSettings.Instance.IsMouseVisible(true);
-            StartMenu();
+            //StartMenu();
+            loginGame.MakeGameObjects(this);
         }
 
         public override void OnSwitchAwayFromThisScene()
@@ -36,10 +39,8 @@ namespace Diablo_8_SQLite
         public override void Update()
         {
             base.Update();
-            go_login.IsActive = startGame.GetComponent<ButtonGUI>().MouseIsHovering;
         }
-        GameObject startGame = new GameObject();
-        GameObject go_login = new GameObject();
+
         public void StartMenu()
         {
             // Start Menu GameObject.
@@ -47,7 +48,7 @@ namespace Diablo_8_SQLite
             Instantiate(startMenu);
 
             // Start Game Button.
-            
+            GameObject startGame = new GameObject();
             SpriteRenderer srStart = startGame.AddComponent<SpriteRenderer>();
             srStart.OriginPositionEnum = OriginPositionEnum.Mid;
             ButtonGUI startButton = startGame.AddComponent<ButtonGUI>(new ButtonGUI
@@ -65,9 +66,9 @@ namespace Diablo_8_SQLite
             startGame.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 150);
             startGame.MyParent = startMenu;
 
-            
+            Instantiate(startGame);
 
-            
+            GameObject go_login = new GameObject();
             SpriteRenderer sr_login = go_login.AddComponent<SpriteRenderer>();
             sr_login.OriginPositionEnum = OriginPositionEnum.Mid;
             InputFieldGUI inputFieldGUI = new InputFieldGUI
@@ -84,7 +85,6 @@ namespace Diablo_8_SQLite
             go_login.Transform.Scale = new Vector2(600, 100);
             go_login.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 350);
             Instantiate(go_login);
-            Instantiate(startGame);
         }
     }
 }

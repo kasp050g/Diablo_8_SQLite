@@ -106,6 +106,8 @@ namespace MonogameFramework
                 }
                 else
                 {
+                    // TODO: see if you can fix this.
+                    // so if it dont got a SpriteRenderer it can make it owns
                     //GameObject.AddComponent<SpriteRenderer>(new SpriteRenderer(image));
                 }
             }

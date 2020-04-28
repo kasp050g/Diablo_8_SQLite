@@ -1,5 +1,4 @@
-﻿using SQLiteFramework.Generics;
-using SQLiteFramework.Interfaces;
+﻿using SQLiteFramework.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +13,7 @@ namespace SQLiteFramework.Framework
         private static ICommandTable finder = new FindRowCommand();
         private static ICommandTable deleter = new DeleteRowCommand();
         private static ICommandTable renamer = new TableRenameCommand();
+        private static ICommandTable getAll = new GetAllRowsCommand();
 
         public static void InsertRow(this ITable tableToInsertTo, params dynamic[] rowColumnData)
         {
@@ -76,6 +76,14 @@ namespace SQLiteFramework.Framework
                 renamer.ExecuteOnTables[0] = tableToRename;
                 renamer.Execute();
             }
+        }
+
+        public static List<IRowElement> GetAllRows(this ITable tableToSearchIn)
+        {
+            getAll.ExecuteOnTables[0] = tableToSearchIn;
+            getAll.Execute();
+
+            return (getAll as GetAllRowsCommand).OutputRows;
         }
     }
 }

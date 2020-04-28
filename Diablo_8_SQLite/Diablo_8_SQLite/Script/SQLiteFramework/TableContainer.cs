@@ -22,6 +22,8 @@ namespace Diablo_8_SQLite.Script.SQLiteFramework
         public TableContainer()
         {
             InitContainer();
+
+            AddTableContent();
         }
 
         private void InitContainer()
@@ -53,8 +55,8 @@ namespace Diablo_8_SQLite.Script.SQLiteFramework
                                     "IsMelee".AsType(typeof(bool)),
                                     "DamageScalingParam".AsType(typeof(int)),
                                     "ManaCostScalingParam".AsType(typeof(int)),
-                                    "IconID".AsType(typeof(int)),
-                                    "DisplayID".AsType(typeof(int)),
+                                    "IconID".AsType(typeof(string)),
+                                    "DisplayID".AsType(typeof(string)),
                                     "ClassID".AsType(typeof(int)));
 
             SkillRequiredTable = new Table("SkillRequired_TABLE", provider, mapper,
@@ -104,8 +106,8 @@ namespace Diablo_8_SQLite.Script.SQLiteFramework
                                    "Energy".AsType(typeof(int)),
                                    "Health".AsType(typeof(int)),
                                    "Mana".AsType(typeof(int)),
-                                   "IconID".AsType(typeof(int)),
-                                   "DisplayID".AsType(typeof(int)),
+                                   "IconID".AsType(typeof(string)),
+                                   "DisplayID".AsType(typeof(string)),
                                    "Description".AsType(typeof(string)),
                                    "GoldCost".AsType(typeof(int)));
 
@@ -113,6 +115,11 @@ namespace Diablo_8_SQLite.Script.SQLiteFramework
                                            "UserID".AsType(typeof(int)),
                                            "Equipped".AsType(typeof(bool)),
                                            "ItemID".AsType(typeof(int)));
+        }
+
+        private void AddTableContent()
+        {
+
         }
     }
 }

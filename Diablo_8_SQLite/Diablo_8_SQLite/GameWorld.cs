@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonogameFramework;
 using Script.Generics;
+using SQLiteFramework.Framework;
 
 namespace Diablo_8_SQLite
 {

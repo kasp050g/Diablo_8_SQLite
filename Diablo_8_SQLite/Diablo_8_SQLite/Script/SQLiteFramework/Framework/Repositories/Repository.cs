@@ -31,13 +31,14 @@ namespace SQLiteFramework.Framework
 
         public void WriteToScreen()
         {
-            foreach (IRowElement row in GetAllRows())
-            {
-                if (row.Id == 1)
-                    Console.WriteLine($"{row.LocatedInTable.TableName}");
+            foreach (ITable table in RepositoryTables)
+                foreach (IRowElement row in table.GetAllRows())
+                {
+                    if (row.Id == 1)
+                        Console.WriteLine($"{row.LocatedInTable.TableName}");
 
-                Console.WriteLine(row);
-            }
+                    Console.WriteLine(row);
+                }
         }
     }
 }

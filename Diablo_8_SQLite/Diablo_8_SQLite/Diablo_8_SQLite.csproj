@@ -91,7 +91,9 @@
     <Compile Include="Script\SQLiteFramework\ExtensionMethods\TypeExtension.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\DBCommands\DeleteRowCommand.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\DBCommands\FindRowCommand.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\DBCommands\GetAllRowsCommand.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\DBCommands\InsertRowCommand.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\DBCommands\RenameColumnCommand.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\DBCommands\TableRenameCommand.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\Global\Mapper.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\Global\RowElement.cs" />
@@ -109,6 +111,7 @@
     <Compile Include="Script\SQLiteFramework\TableContainer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>

@@ -43,7 +43,7 @@ namespace SQLiteFramework.Framework
             string variablesStr = string.Join("    ", TableColumnData.Keys);
             Console.WriteLine($"Id    {variablesStr}");
 
-            foreach (IRowElement row in GetAllRows())
+            foreach (IRowElement row in this.GetAllRows())
                 Console.WriteLine(row);
         }
 

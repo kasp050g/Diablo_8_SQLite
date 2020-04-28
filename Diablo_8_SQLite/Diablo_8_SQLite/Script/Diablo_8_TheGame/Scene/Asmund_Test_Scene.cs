@@ -40,8 +40,7 @@ namespace Diablo_8_SQLite
         }
         private void AsmundTest()
         {
-            float RefScreenSizeX = 800;
-            float RefScreenSizeY = 600;
+    
             ////go.AddComponent<SpriteRenderer>();
 
             GameObject background = new GameObject();
@@ -63,10 +62,13 @@ namespace Diablo_8_SQLite
             MakeSkill("Skill1", new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.77f, GraphicsSetting.Instance.ScreenSize.Y / 8.5f));
             MakeSkill("Skill2", new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.77f, GraphicsSetting.Instance.ScreenSize.Y / 2.5f));
             MakeSkill("Skill3", new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.77f, GraphicsSetting.Instance.ScreenSize.Y / 1.5f));
-            //MakeSkill("Skill5", new Vector2(1050, 50));
-            //MakeSkill("Skill4", new Vector2(900, 160));
-            //MakeSkill("Skill6", new Vector2(1050, 200));
-            //MakeSkill("Skill7", new Vector2(1050, 600));
+            MakeSkill("Skill4", new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.47f, GraphicsSetting.Instance.ScreenSize.Y / 4.1f));
+            MakeSkill("Skill5", new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.24f, GraphicsSetting.Instance.ScreenSize.Y / 8.5f));
+            MakeSkill("Skill6", new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.24f, GraphicsSetting.Instance.ScreenSize.Y / 3.5f));
+            MakeSkill("Skill7", new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.08f, GraphicsSetting.Instance.ScreenSize.Y / 2.35f));
+            MakeSkill("Skill8", new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.24f, GraphicsSetting.Instance.ScreenSize.Y / 1.25f));
+            MakeSkill("Skill9", new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.08f, GraphicsSetting.Instance.ScreenSize.Y / 1.65f));
+            MakeSkill("Skill10", new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.47f, GraphicsSetting.Instance.ScreenSize.Y / 1.25f));
             MouseSettings.Instance.IsMouseVisible(true);
             //go.AddComponent<SpriteRenderer>(new SpriteRenderer("Pixel", OriginPositionEnum.Mid, 1, Color.White));
             //SpriteRenderer lol = go.GetComponent<SpriteRenderer>();
@@ -79,7 +81,7 @@ namespace Diablo_8_SQLite
             button10.AddComponent<SpriteRenderer>();
             ButtonGUI btn10 = button10.AddComponent<ButtonGUI>(new ButtonGUI(SpriteContainer.Instance.sprite[sprite], SpriteContainer.Instance.sprite[sprite], Color.White, Color.Green));
             btn10.OnClick = () => { button10.IsActive = !button10.IsActive; };
-            button10.Transform.Scale = new Vector2(0.9f, 0.9f);
+            button10.Transform.Scale = new Vector2(GraphicsSetting.Instance.ScreenScale.X, GraphicsSetting.Instance.ScreenSize.Y / 720);
             button10.Transform.Position = pos;
             Instantiate(button10);
 

@@ -55,6 +55,7 @@
     <Compile Include="Script\Diablo_8_TheGame\Scene\Lukas_Test_Scene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\MainScene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\_Pick_Scene_Test.cs" />
+    <Compile Include="Script\Generics\Singletons.cs" />
     <Compile Include="Script\MainSystem\Animations\AnimationContainer.cs" />
     <Compile Include="Script\MainSystem\Animations\AnimationController.cs" />
     <Compile Include="Script\MainSystem\Cameras\Camera.cs" />
@@ -97,7 +98,7 @@
     <Compile Include="Script\SQLiteFramework\Framework\Global\SQLiteDatabaseProvider.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\Global\Table.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\Repositories\Repository.cs" />
-    <Compile Include="Script\SQLiteFramework\Generics\Singleton.cs" />
+    <Compile Include="Script\Generics\Singleton.cs" />
     <Compile Include="Script\SQLiteFramework\Interfaces\CommandPattern\ICommand.cs" />
     <Compile Include="Script\SQLiteFramework\Interfaces\CommandPattern\ICommandTable.cs" />
     <Compile Include="Script\SQLiteFramework\Interfaces\IDBProvider.cs" />

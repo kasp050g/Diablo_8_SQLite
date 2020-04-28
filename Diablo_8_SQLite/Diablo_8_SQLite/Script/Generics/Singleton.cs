@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SQLiteFramework.Generics
+namespace Script.Generics
 {
-    public class Singleton<T>
+    public class Singleton<T> where T : class, new()
     {
-        private static T instance;
+        private static T instance = null;
+
         private static readonly object threadLock = new object();
 
         public static T Instance
@@ -18,7 +19,7 @@ namespace SQLiteFramework.Generics
                 lock (threadLock)
                 {
                     if (instance == null)
-                        instance = (T)Activator.CreateInstance(typeof(T));
+                        instance = new T();
 
                     return instance;
                 }

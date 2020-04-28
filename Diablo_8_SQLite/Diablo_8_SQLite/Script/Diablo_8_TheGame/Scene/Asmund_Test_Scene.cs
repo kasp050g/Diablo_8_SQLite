@@ -44,7 +44,7 @@ namespace Diablo_8_SQLite
             ////go.AddComponent<SpriteRenderer>();
 
             GameObject background = new GameObject();
-            SpriteRenderer sp = new SpriteRenderer("TalentsBackground", OriginPositionEnum.Mid, 0, Color.White);
+            SpriteRenderer sp = new SpriteRenderer("Pixel", OriginPositionEnum.Mid, 0, Color.White);
             background.AddComponent<SpriteRenderer>(sp);
             background.Transform.Position = new Vector2(0,0);
             //go.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X/2, 0);
@@ -53,7 +53,7 @@ namespace Diablo_8_SQLite
             
             Instantiate(background);
 
-            MakeSkill("Skill2", new Vector2(100, 100));
+            MakeSkill("Panda", new Vector2(100, 100));
             MouseSettings.Instance.IsMouseVisible(true);
             //go.AddComponent<SpriteRenderer>(new SpriteRenderer("Pixel", OriginPositionEnum.Mid, 1, Color.White));
             //SpriteRenderer lol = go.GetComponent<SpriteRenderer>();
@@ -80,6 +80,10 @@ namespace Diablo_8_SQLite
             overlay.Transform.Scale = new Vector2(200, 200);
             overlay.Transform.Position = pos;
             overlay.MyParent = descBox;
+            //Color color = new Color(1, 1, 1, 05f);
+            Color color1 = new Color(Color.Gray, 0.5f);
+            //Color color1 = new Color(200, 200, 200, 254);
+            overlay.GetComponent<SpriteRenderer>().Color = color1;
             GameObject textBox = new GameObject();
             TextGUI text = new TextGUI(SpriteContainer.Instance.normalFont, Color.Black, new Vector2(1,1),"SuperAttack");
             textBox.Transform.Position = pos;

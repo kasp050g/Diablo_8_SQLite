@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Diablo_8_SQLite.Script.SQLiteFramework
+namespace SQLiteFramework.Framework
 {
     public class TableContainer
     {
-        private IDBProvider provider = new SQLiteDatabaseProvider("");
+        private IDBProvider provider = new SQLiteDatabaseProvider("Data Source=Diablo8.db; Version=3; new=true");
         private IMapper mapper = new Mapper();
 
         public ITable ClassTable, StartStatsTable, HeroesSaveTable,

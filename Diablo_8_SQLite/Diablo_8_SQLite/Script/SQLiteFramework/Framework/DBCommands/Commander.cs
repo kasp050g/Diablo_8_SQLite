@@ -13,6 +13,8 @@ namespace SQLiteFramework.Framework
         private static ICommandTable finder = new FindRowCommand();
         private static ICommandTable deleter = new DeleteRowCommand();
         private static ICommandTable renamer = new TableRenameCommand();
+        private static ICommandTable columnRenamer = new RenameColumnCommand();
+        private static ICommandTable updater = new UpdateCommand();
         private static ICommandTable getAll = new GetAllRowsCommand();
 
         public static void InsertRow(this ITable tableToInsertTo, params dynamic[] rowColumnData)
@@ -65,6 +67,39 @@ namespace SQLiteFramework.Framework
             return (finder as FindRowCommand).OutputRow;
         }
 
+        public static void Update(this ITable tableToUpdate, int id, params KeyValuePair<string, dynamic>[] valuesToOverwrite)
+        {
+            (updater as UpdateCommand).IdToLookFor = id;
+            (updater as UpdateCommand).IdsToLookFor.Clear();
+
+            (updater as UpdateCommand).ValuesToChange = valuesToOverwrite.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+            updater.ExecuteOnTables[0] = tableToUpdate;
+            updater.Execute();
+        }
+
+        public static void Update(this ITable tableToUpdate, List<int> ids, params KeyValuePair<string, dynamic>[] valuesToOverwrite)
+        {
+            (updater as UpdateCommand).IdToLookFor = 0;
+            (updater as UpdateCommand).IdsToLookFor = ids;
+
+            (updater as UpdateCommand).ValuesToChange = valuesToOverwrite.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+            updater.ExecuteOnTables[0] = tableToUpdate;
+            updater.Execute();
+        }
+
+        public static void Update(this ITable tableToUpdate, params KeyValuePair<string, dynamic>[] valuesToOverwrite)
+        {
+            (updater as UpdateCommand).IdToLookFor = 0;
+            (updater as UpdateCommand).IdsToLookFor.Clear();
+
+            (updater as UpdateCommand).ValuesToChange = valuesToOverwrite.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+
+            updater.ExecuteOnTables[0] = tableToUpdate;
+            updater.Execute();
+        }
+
         public static void RenameTable(this ITable tableToRename, string renameTo)
         {
             if (tableToRename.TableName == renameTo)
@@ -76,6 +111,15 @@ namespace SQLiteFramework.Framework
                 renamer.ExecuteOnTables[0] = tableToRename;
                 renamer.Execute();
             }
+        }
+
+        public static void RenameColumn(this ITable tableToModify, string column, string newColumnName)
+        {
+            (columnRenamer as RenameColumnCommand).ColumnName = column;
+            (columnRenamer as RenameColumnCommand).NewColumnName = newColumnName;
+
+            columnRenamer.ExecuteOnTables[0] = tableToModify;
+            columnRenamer.Execute();
         }
 
         public static List<IRowElement> GetAllRows(this ITable tableToSearchIn)

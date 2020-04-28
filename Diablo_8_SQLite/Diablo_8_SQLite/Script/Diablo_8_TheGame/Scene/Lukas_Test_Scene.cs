@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using MonogameFramework;
+using SQLiteFramework.Framework;
+using Script.Generics;
+using SQLiteFramework.ExtensionMethods;
 
 namespace Diablo_8_SQLite
 {
@@ -17,6 +20,14 @@ namespace Diablo_8_SQLite
 
         public override void Initialize()
         {
+            Singletons.TableContainerSingleton.UsersTable.RenameColumn("Salt", "JohnDoe");
+
+            Singletons.TableContainerSingleton.UsersTable.Update("Name".Pair("John"));
+            Singletons.TableContainerSingleton.UsersTable.Update(4, "Name".Pair("John"));
+            Singletons.TableContainerSingleton.UsersTable.Update(new List<int>() { 1, 2, 3, 4 }, "Name".Pair("John"));
+
+            (Singletons.TableContainerSingleton.UsersTable as Table).WriteToScreen();
+
             base.Initialize();
         }
 

@@ -7,7 +7,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{316567EE-969F-45E4-A3D7-BE97BA3B023C}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Diablo_8_SQLite</RootNamespace>
     <AssemblyName>Diablo_8_SQLite</AssemblyName>
@@ -41,6 +41,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GameWorld.cs" />
@@ -94,6 +97,7 @@
     <Compile Include="Script\SQLiteFramework\Framework\DBCommands\GetAllRowsCommand.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\DBCommands\InsertRowCommand.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\DBCommands\RenameColumnCommand.cs" />
+    <Compile Include="Script\SQLiteFramework\Framework\DBCommands\UpdateCommand.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\DBCommands\TableRenameCommand.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\Global\Mapper.cs" />
     <Compile Include="Script\SQLiteFramework\Framework\Global\RowElement.cs" />

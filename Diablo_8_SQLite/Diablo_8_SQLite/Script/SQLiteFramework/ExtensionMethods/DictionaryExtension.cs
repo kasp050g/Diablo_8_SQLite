@@ -13,5 +13,13 @@ namespace SQLiteFramework.ExtensionMethods
             foreach (KeyValuePair<TKey, TValue> keyValuePair in range)
                 dictionary.Add(keyValuePair.Key, keyValuePair.Value);
         }
+
+        public static void ChangeKey<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TKey newKey)
+        {
+            TValue value = dictionary[key];
+
+            dictionary.Remove(key);
+            dictionary[newKey] = value;
+        }
     }
 }

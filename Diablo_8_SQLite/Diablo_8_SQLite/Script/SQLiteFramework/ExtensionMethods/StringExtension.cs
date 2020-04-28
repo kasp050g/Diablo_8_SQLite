@@ -13,14 +13,27 @@ namespace SQLiteFramework.ExtensionMethods
             return new KeyValuePair<string, Type>(key, type);
         }
 
+        public static KeyValuePair<string, dynamic> Pair(this string key, dynamic value)
+        {
+            return new KeyValuePair<string, dynamic>(key, value);
+        }
+
         public static string JoinSQLiteKeyValuePair(this Dictionary<string, Type> keyValuePairs)
         {
             List<string> result = new List<string>();
 
             foreach (KeyValuePair<string, Type> keyValuePair in keyValuePairs)
-            {
                 result.Add($"{keyValuePair.Key} {keyValuePair.Value.TypeToSQLiteDataType()}");
-            }
+
+            return string.Join(", ", result);
+        }
+
+        public static string UpdateJoinSQLiteKeyValuePair<TKey, TValue>(this Dictionary<TKey, TValue> keyValuePairs)
+        {
+            List<string> result = new List<string>();
+
+            foreach (KeyValuePair<TKey, TValue> keyValuePair in keyValuePairs)
+                result.Add($"{keyValuePair.Key} = {CheckIfString(keyValuePair.Value)}");
 
             return string.Join(", ", result);
         }

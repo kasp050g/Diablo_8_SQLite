@@ -33,7 +33,7 @@ namespace SQLiteFramework.Framework
 
         public Table(string tableName, IDBProvider provider, IMapper mapper, params KeyValuePair<string, Type>[] tableColumnData) : this(tableName, provider, mapper)
         {
-            TableColumnData = tableColumnData.ToDictionary(KVP => KVP.Key, KVP => KVP.Value);
+            TableColumnData = tableColumnData.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
             InstantiateDBTable();
         }

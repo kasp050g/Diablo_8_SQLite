@@ -1,4 +1,4 @@
-﻿using Diablo_8_SQLite.Script.SQLiteFramework;
+﻿using SQLiteFramework.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;

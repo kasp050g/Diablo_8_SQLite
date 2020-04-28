@@ -36,6 +36,9 @@ namespace SQLiteFramework.ExtensionMethods
                 case TypeCode.UInt64:
                     return "INTEGER";
 
+                case TypeCode.Boolean:
+                    return "INTEGER";
+
                 default:
                     throw new Exception($"{type.Name.ToString()} : Type not found or has not been implemented.");
             }

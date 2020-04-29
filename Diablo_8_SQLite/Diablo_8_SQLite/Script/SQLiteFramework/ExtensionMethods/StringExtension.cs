@@ -52,6 +52,9 @@ namespace SQLiteFramework.ExtensionMethods
                 if (sourceArray[i] is string)
                     sourceArray[i] = $"'{sourceArray[i]}'";
 
+                else if (sourceArray[i] is bool)
+                    sourceArray[i] = Convert.ToString((bool)sourceArray[i].BoolToIntSQLite());
+
             return sourceArray;
         }
     }

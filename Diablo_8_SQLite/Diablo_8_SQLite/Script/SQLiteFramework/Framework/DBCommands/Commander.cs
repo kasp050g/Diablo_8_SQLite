@@ -25,6 +25,13 @@ namespace SQLiteFramework.Framework
             inserter.Execute();
         }
 
+        public static void InsertRow(this ITable tableToInsertTo, bool isDuplication, params dynamic[] rowColumnData)
+        {
+            (inserter as InsertRowCommand).IsDuplicate = isDuplication;
+
+            InsertRow(tableToInsertTo, rowColumnData);
+        }
+
         public static void DeleteRow(this ITable tableToDeleteFrom, int ID)
         {
             (deleter as DeleteRowCommand).IDToLookFor = ID;
@@ -44,9 +51,9 @@ namespace SQLiteFramework.Framework
             deleter.Execute();
         }
 
-        public static IRowElement FindRow(this ITable tableToLookIn, int ID)
+        public static IRowElement FindRow(this ITable tableToLookIn, int id)
         {
-            (finder as FindRowCommand).IDToLookFor = ID;
+            (finder as FindRowCommand).IDToLookFor = id;
 
             finder.ExecuteOnTables[0] = tableToLookIn;
             finder.Execute();

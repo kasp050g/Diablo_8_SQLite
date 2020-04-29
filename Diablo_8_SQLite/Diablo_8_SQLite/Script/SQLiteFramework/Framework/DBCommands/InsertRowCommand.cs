@@ -11,7 +11,7 @@ namespace SQLiteFramework.Framework
 {
     public class InsertRowCommand : ICommandTable
     {
-        public bool IsDuplicate = false;
+        //public bool IsDuplicate = false;
 
         public dynamic[] RowColumnData;
 
@@ -19,12 +19,12 @@ namespace SQLiteFramework.Framework
 
         public void Execute()
         {
-            if (IsDuplicate)
+            //if (IsDuplicate)
                 CodeToExecute();
-            else
-            {
-
-            }
+            //else
+            //{
+            //
+            //}
         }
 
         private void CodeToExecute()

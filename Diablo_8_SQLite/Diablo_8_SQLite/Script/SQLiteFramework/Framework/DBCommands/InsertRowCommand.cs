@@ -2,6 +2,7 @@
 using SQLiteFramework.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace SQLiteFramework.Framework
         public bool IsDuplicate = true;
 
         public dynamic[] RowColumnData;
+
+        public IRowElement OutputRow;
 
         public ITable[] ExecuteOnTables { get; set; } = new ITable[1];
 
@@ -30,13 +33,18 @@ namespace SQLiteFramework.Framework
 
         private void CodeToExecute()
         {
-            var connection = ExecuteOnTables[0].Provider.CreateConnection();
+            IDbConnection connection = ExecuteOnTables[0].Provider.CreateConnection();
             connection.Open();
 
-            var cmd = new SQLiteCommand($"INSERT INTO {ExecuteOnTables[0].TableName} ({string.Join(", ", ExecuteOnTables[0].TableColumnData.Keys)}) VALUES ({string.Join(", ", RowColumnData.ArrayStringsToSQLiteStrings())})", (SQLiteConnection)connection);
+            SQLiteCommand cmd = new SQLiteCommand($"INSERT INTO {ExecuteOnTables[0].TableName} ({string.Join(", ", ExecuteOnTables[0].TableColumnData.Keys)}) VALUES ({string.Join(", ", RowColumnData.ArrayStringsToSQLiteStrings())});", (SQLiteConnection)connection);
             cmd.ExecuteNonQuery();
 
+            SQLiteCommand cmdID = new SQLiteCommand("SELECT last_insert_rowid()", (SQLiteConnection)connection);
+            int lastID = Convert.ToInt32(cmdID.ExecuteScalar());
+
             connection.Close();
+
+            OutputRow = new RowElement(ExecuteOnTables[0], lastID, DictionaryExtension.CombineArrays(ExecuteOnTables[0].TableColumnData.Keys.ToArray(), RowColumnData));
         }
 
         private bool CheckIfRowExists(ITable table)

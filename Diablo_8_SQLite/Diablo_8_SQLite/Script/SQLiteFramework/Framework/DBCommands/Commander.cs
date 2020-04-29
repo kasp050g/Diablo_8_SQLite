@@ -17,19 +17,39 @@ namespace SQLiteFramework.Framework
         private static ICommandTable updater = new UpdateCommand();
         private static ICommandTable getAll = new GetAllRowsCommand();
 
-        public static void InsertRow(this ITable tableToInsertTo, params dynamic[] rowColumnData)
+        //public static void InsertRow(this ITable tableToInsertTo, params dynamic[] rowColumnData)
+        //{
+        //    (inserter as InsertRowCommand).RowColumnData = rowColumnData;
+        //
+        //    inserter.ExecuteOnTables[0] = tableToInsertTo;
+        //    inserter.Execute();
+        //}
+
+        public static IRowElement InsertRow(this ITable tableToInsertTo, params dynamic[] rowColumnData)
+        {
+            //InsertRow(tableToInsertTo, rowColumnData);
+            (inserter as InsertRowCommand).IsDuplicate = true;
+
+            InsertRowBase(tableToInsertTo, rowColumnData);
+
+            return (inserter as InsertRowCommand).OutputRow;
+        }
+
+        public static IRowElement InsertRow(this ITable tableToInsertTo, bool isDuplication, params dynamic[] rowColumnData)
+        {
+            (inserter as InsertRowCommand).IsDuplicate = isDuplication;
+
+            InsertRowBase(tableToInsertTo, rowColumnData);
+
+            return (inserter as InsertRowCommand).OutputRow;
+        }
+
+        private static void InsertRowBase(this ITable tableToInsertTo, params dynamic[] rowColumnData)
         {
             (inserter as InsertRowCommand).RowColumnData = rowColumnData;
 
             inserter.ExecuteOnTables[0] = tableToInsertTo;
             inserter.Execute();
-        }
-
-        public static void InsertRow(this ITable tableToInsertTo, bool isDuplication, params dynamic[] rowColumnData)
-        {
-            (inserter as InsertRowCommand).IsDuplicate = isDuplication;
-
-            InsertRow(tableToInsertTo, rowColumnData);
         }
 
         public static void DeleteRow(this ITable tableToDeleteFrom, int ID)

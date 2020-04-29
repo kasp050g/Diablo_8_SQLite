@@ -123,17 +123,23 @@ namespace SQLiteFramework.Framework
 
         private void AddTableContent()
         {
-            Singletons.TableContainerSingleton.ClassTable.InsertRow("Sorceress");
-            Singletons.TableContainerSingleton.ClassTable.InsertRow("Barbarian");
-            Singletons.TableContainerSingleton.ClassTable.InsertRow("Necromancer");
+            ClassTable.InsertRow(true,"Sorceress");
+            ClassTable.InsertRow(false, "Barbarian");
+            ClassTable.InsertRow(false, "Necromancer");
 
-            List<IRowElement> classes = Singletons.TableContainerSingleton.ClassTable.GetAllRows();
+            List<IRowElement> classes = ClassTable.GetAllRows();
 
             foreach (IRowElement x in classes)
             {
-                int h = x.RowElementVariables["ID"];
+                int h = x.Id;
                 Console.WriteLine(h.ToString() + ": " + x.RowElementVariables["Name"]);
             }
+
+                
+            //for (int i = 0; i < classes.Count; i++)
+            //{
+            //    ClassTable.DeleteRow(classes[i].Id);
+            //}
         }
     }
 }

@@ -23,7 +23,7 @@ namespace MonogameFramework
         #region Properties
         public Color FontColor { get => fontColor; set => fontColor = value; }
         public SpriteFont SpriteFont { get => spriteFont; set => spriteFont = value; }
-        public string Text { get => text; set => text = value; }
+        public string Text { get { return text; } set { text = value; UpdateOriginPosition(); } }
         public Vector2 FontScale { get => fontScale; set => fontScale = value; }
         public float LayerDepth { get => layerDepth; set => layerDepth = value; }
         public OriginPositionEnum OriginPositionEnum { get => originPositionEnum; set => originPositionEnum = value; }

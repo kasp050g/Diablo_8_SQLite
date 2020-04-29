@@ -1,4 +1,5 @@
-﻿using SQLiteFramework.ExtensionMethods;
+﻿using Script.Generics;
+using SQLiteFramework.ExtensionMethods;
 using SQLiteFramework.Framework;
 using SQLiteFramework.Interfaces;
 using System;
@@ -122,7 +123,17 @@ namespace SQLiteFramework.Framework
 
         private void AddTableContent()
         {
+            Singletons.TableContainerSingleton.ClassTable.InsertRow("Sorceress");
+            Singletons.TableContainerSingleton.ClassTable.InsertRow("Barbarian");
+            Singletons.TableContainerSingleton.ClassTable.InsertRow("Necromancer");
 
+            List<IRowElement> classes = Singletons.TableContainerSingleton.ClassTable.GetAllRows();
+
+            foreach (IRowElement x in classes)
+            {
+                int h = x.RowElementVariables["ID"];
+                Console.WriteLine(h.ToString() + ": " + x.RowElementVariables["Name"]);
+            }
         }
     }
 }

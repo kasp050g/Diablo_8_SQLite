@@ -21,14 +21,10 @@ namespace SQLiteFramework.Framework
                 for (int i = 0; i < readFromTable.TableColumnData.Count; i++)
                     element.RowElementVariables.Add(readFromTable.TableColumnData.ElementAt(i).Key, Convert.ChangeType(reader.GetValue(i + 1), readFromTable.TableColumnData.ElementAt(i).Value));
 
-                if (element != null)
-                    result.Add(element);
+                result.Add(element);
             }
 
-            if (result.Count != 0)
-                return result;
-            else
-                return null;
+            return result;
         }
     }
 }

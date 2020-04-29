@@ -40,7 +40,7 @@ namespace SQLiteFramework.ExtensionMethods
                     return "INTEGER";
 
                 default:
-                    throw new Exception($"{type.Name.ToString()} : Type not found or has not been implemented.");
+                    throw new Exception($"{type.Name} : Type not found or has not been implemented.");
             }
         }
     }

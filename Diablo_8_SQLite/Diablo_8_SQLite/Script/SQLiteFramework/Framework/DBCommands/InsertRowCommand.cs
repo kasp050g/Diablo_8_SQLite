@@ -11,7 +11,7 @@ namespace SQLiteFramework.Framework
 {
     public class InsertRowCommand : ICommandTable
     {
-        //public bool IsDuplicate = false;
+        public bool IsDuplicate = true;
 
         public dynamic[] RowColumnData;
 
@@ -19,12 +19,13 @@ namespace SQLiteFramework.Framework
 
         public void Execute()
         {
-            //if (IsDuplicate)
+            if (IsDuplicate)
                 CodeToExecute();
-            //else
-            //{
-            //
-            //}
+            else
+            {
+                if (!CheckIfRowExists(ExecuteOnTables[0]))
+                    CodeToExecute();
+            }
         }
 
         private void CodeToExecute()
@@ -38,6 +39,24 @@ namespace SQLiteFramework.Framework
             (ExecuteOnTables[0] as Table).CurrentID++;
 
             connection.Close();
+        }
+
+        private bool CheckIfRowExists(ITable table)
+        {
+            if ((table as Table).CurrentID != 0)
+            {
+                List<IRowElement> elementsToCompare = table.GetAllRows();
+
+                foreach (IRowElement element in elementsToCompare)
+                    if (element.RowElementVariables.Values.ToArray() == RowColumnData)
+                    {
+                        return true;
+                    }
+
+                return false;
+            }
+
+            return false;
         }
     }
 }

@@ -36,8 +36,6 @@ namespace SQLiteFramework.Framework
             var cmd = new SQLiteCommand($"INSERT INTO {ExecuteOnTables[0].TableName} ({string.Join(", ", ExecuteOnTables[0].TableColumnData.Keys)}) VALUES ({string.Join(", ", RowColumnData.ArrayStringsToSQLiteStrings())})", (SQLiteConnection)connection);
             cmd.ExecuteNonQuery();
 
-            //(ExecuteOnTables[0] as Table).CurrentID++;
-
             connection.Close();
         }
 
@@ -46,17 +44,12 @@ namespace SQLiteFramework.Framework
             try
             {
                 List<IRowElement> elementsToCompare = table.GetAllRows();
-                //if ((table as Table).CurrentID != 0)
-                //if(elementsToCompare.Count)
-                //{
+
                 foreach (IRowElement element in elementsToCompare)
-                    if (element.RowElementVariables.Values.ToArray() == RowColumnData)
-                    {
+                    if (RowColumnData.SequenceEqual(element.RowElementVariables.Values.ToArray()))
                         return true;
-                    }
 
                 return false;
-                //}
             }
 
             catch

@@ -33,6 +33,7 @@ namespace Diablo_8_SQLite
         SpriteRenderer sr05;
         ButtonGUI buttonGUI05;
 
+
         public void MakeGameObjects(Scene scene)
         {
             // --- Main GameObject
@@ -58,8 +59,9 @@ namespace Diablo_8_SQLite
             // Modify Components
             emailInput.MyParent = mainGameObject;
             sr01.OriginPositionEnum = OriginPositionEnum.Mid;
-            emailInput.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 200);
-            emailInput.Transform.Scale = new Vector2(500, 100);
+            sr01.LayerDepth = 0.1f;
+            emailInput.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 200 * GraphicsSetting.Instance.ScreenScale.X);
+            emailInput.Transform.Scale = new Vector2(500 * GraphicsSetting.Instance.ScreenScale.X, 100 * GraphicsSetting.Instance.ScreenScale.Y);
 
 
             // --- Email Input
@@ -81,8 +83,9 @@ namespace Diablo_8_SQLite
             // Modify Components
             passwordInput.MyParent = mainGameObject;
             sr02.OriginPositionEnum = OriginPositionEnum.Mid;
-            passwordInput.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 350);
-            passwordInput.Transform.Scale = new Vector2(500, 100);
+            sr02.LayerDepth = 0.1f;
+            passwordInput.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 350 * GraphicsSetting.Instance.ScreenScale.X);
+            passwordInput.Transform.Scale = new Vector2(500 * GraphicsSetting.Instance.ScreenScale.X, 100 * GraphicsSetting.Instance.ScreenScale.Y);
 
             // --- Login Button
             // Make Components
@@ -105,9 +108,10 @@ namespace Diablo_8_SQLite
             // Modify Components
             loginButton.MyParent = mainGameObject;
             sr03.OriginPositionEnum = OriginPositionEnum.Mid;
-            loginButton.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 500);
-            loginButton.Transform.Scale = new Vector2(200, 50);
-            buttonGUI03.OnClick = () => { ClickOnLogin(); };
+            sr03.LayerDepth = 0.1f;
+            loginButton.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 500 * GraphicsSetting.Instance.ScreenScale.X);
+            loginButton.Transform.Scale = new Vector2(200 * GraphicsSetting.Instance.ScreenScale.X, 50 * GraphicsSetting.Instance.ScreenScale.Y);
+            buttonGUI03.OnClick += () => { ClickOnLogin(); };
 
             // --- Error Message
             // Error Message
@@ -115,14 +119,16 @@ namespace Diablo_8_SQLite
                (
                SpriteContainer.Instance.normalFont,
                Color.Red,
-               new Vector2(0.5f, 0.5f),
+               new Vector2(0.5f * GraphicsSetting.Instance.ScreenScale.X, 0.5f * GraphicsSetting.Instance.ScreenScale.Y),
                "Error: no user fount with that email / password"
                );
             // Add the Components
             errorMessage.AddComponent<TextGUI>(textGUI04);
             // Modify Components
             errorMessage.MyParent = mainGameObject;
-            errorMessage.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2 - 220, 430);
+            errorMessage.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2 , 430 * GraphicsSetting.Instance.ScreenScale.X);
+            textGUI04.OriginPositionEnum = OriginPositionEnum.TopMid;
+            textGUI04.LayerDepth = 0.1f;
             errorMessage.IsActive = false;
 
             // --- Go to user Button
@@ -146,8 +152,9 @@ namespace Diablo_8_SQLite
             // Modify Components
             goToMakeUser.MyParent = mainGameObject;
             sr05.OriginPositionEnum = OriginPositionEnum.Mid;
-            goToMakeUser.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 600);
-            goToMakeUser.Transform.Scale = new Vector2(250, 30);
+            sr05.LayerDepth = 0.1f;
+            goToMakeUser.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 600 * GraphicsSetting.Instance.ScreenScale.X);
+            goToMakeUser.Transform.Scale = new Vector2(250 * GraphicsSetting.Instance.ScreenScale.X, 30 * GraphicsSetting.Instance.ScreenScale.Y);
             // TODO : make it go to make user
             //buttonGUI05.OnClick = () => {  };
 

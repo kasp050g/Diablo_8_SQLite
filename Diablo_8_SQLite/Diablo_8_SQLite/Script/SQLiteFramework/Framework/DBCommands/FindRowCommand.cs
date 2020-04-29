@@ -35,10 +35,11 @@ namespace SQLiteFramework.Framework
 
             var reader = cmd.ExecuteReader();
 
-            if (ExecuteOnTables[0].Mapper.MapRowsFromReader(reader, ExecuteOnTables[0]).First() != null)
-                OutputRow = ExecuteOnTables[0].Mapper.MapRowsFromReader(reader, ExecuteOnTables[0]).First();
-            else
-                OutputRow = null;
+            try
+            { OutputRow = ExecuteOnTables[0].Mapper.MapRowsFromReader(reader, ExecuteOnTables[0]).First(); }
+
+            catch
+            { OutputRow = null; }
 
             connection.Close();
         }

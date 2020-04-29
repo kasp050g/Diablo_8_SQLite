@@ -11,7 +11,7 @@ namespace SQLiteFramework.Framework
 {
     class Table : ITable
     {
-        public int CurrentID { get; set; } = 0;
+        //public int CurrentID { get; set; } = 0;
         public IDBProvider Provider { get; }
         public IMapper Mapper { get; }
 

@@ -13,6 +13,7 @@ namespace Diablo_8_SQLite
     public class StartScene : Scene
     {
         LoginGameObject loginGame = new LoginGameObject();
+        MakeUserGameObject makeUser= new MakeUserGameObject();
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
@@ -23,7 +24,8 @@ namespace Diablo_8_SQLite
             base.Initialize();
             MouseSettings.Instance.IsMouseVisible(true);
             //StartMenu();
-            loginGame.MakeGameObjects(this);
+            //loginGame.MakeGameObjects(this);
+            makeUser.MakeUI(this);
         }
 
         public override void OnSwitchAwayFromThisScene()

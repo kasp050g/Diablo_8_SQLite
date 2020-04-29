@@ -7,7 +7,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{316567EE-969F-45E4-A3D7-BE97BA3B023C}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Diablo_8_SQLite</RootNamespace>
     <AssemblyName>Diablo_8_SQLite</AssemblyName>
@@ -42,6 +42,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="GameWorld.cs" />
     <Compile Include="Program.cs" />
@@ -51,13 +54,17 @@
     <Compile Include="Script\Container\SceneContainer.cs" />
     <Compile Include="Script\Container\SpriteContainer.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Asmund_Test_Scene.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\LoginGameObject.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\MakeUserGameObject.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\StartScene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Kasper_Test_Scene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Lukas_Test_Scene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\MainScene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\_Pick_Scene_Test.cs" />
+    <Compile Include="Script\MainSystem\Animations\Animation.cs" />
     <Compile Include="Script\MainSystem\Animations\AnimationContainer.cs" />
     <Compile Include="Script\MainSystem\Animations\AnimationController.cs" />
+    <Compile Include="Script\MainSystem\Animations\Animator.cs" />
     <Compile Include="Script\MainSystem\Cameras\Camera.cs" />
     <Compile Include="Script\MainSystem\Cameras\CameraFollow.cs" />
     <Compile Include="Script\MainSystem\Cameras\CameraMove.cs" />

@@ -16,6 +16,8 @@ namespace MonogameFramework
         string text = string.Empty;
         Vector2 fontScale = new Vector2(1, 1);
         float layerDepth = 0;
+        Vector2 newPosition = new Vector2(0, 0);
+        OriginPositionEnum originPositionEnum = OriginPositionEnum.TopLeft;
         #endregion
 
         #region Properties
@@ -24,6 +26,20 @@ namespace MonogameFramework
         public string Text { get => text; set => text = value; }
         public Vector2 FontScale { get => fontScale; set => fontScale = value; }
         public float LayerDepth { get => layerDepth; set => layerDepth = value; }
+        public OriginPositionEnum OriginPositionEnum { get => originPositionEnum; set => originPositionEnum = value; }
+        public virtual Rectangle OriginRectangle
+        {
+            get
+            {
+                // returns a new rectangle based on the position, scale, sprite width and height.
+                return new Rectangle(
+                    (int)this.GameObject.Transform.Position.X - (int)(this.GameObject.Transform.Origin.X * this.GameObject.Transform.Scale.X),
+                    (int)this.GameObject.Transform.Position.Y - (int)(this.GameObject.Transform.Origin.Y * this.GameObject.Transform.Scale.Y),
+                    (int)(1 * this.GameObject.Transform.Scale.X),
+                    (int)(1 * this.GameObject.Transform.Scale.Y)
+                    );
+            }
+        }
         #endregion
 
         #region Constructors
@@ -34,6 +50,11 @@ namespace MonogameFramework
             this.fontColor = fontColor;
             this.fontScale = fontScale;
             this.text = text;
+            
+        }
+        public void ConstructorMethod()
+        {
+            
         }
         #endregion
 
@@ -44,6 +65,7 @@ namespace MonogameFramework
             {
                 this.spriteFont = SpriteContainer.Instance.normalFont;
             }
+            UpdateOriginPosition();
             base.Awake();
         }
         public override void Start()
@@ -66,7 +88,7 @@ namespace MonogameFramework
                     // String text
                     Text,
                     // Position
-                    GameObject.Transform.Position,
+                    newPosition,
                     // Color
                     fontColor,
                     // Rotation
@@ -87,6 +109,12 @@ namespace MonogameFramework
         {
             base.Destroy();
         }
+
+        public void UpdateOriginPosition()
+        {
+            Helper.UpdateOriginText(text, OriginRectangle, spriteFont, fontScale, originPositionEnum, ref newPosition);
+        }
+
         #endregion
     }
 }

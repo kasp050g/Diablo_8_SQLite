@@ -12,6 +12,8 @@ namespace Diablo_8_SQLite
     //Asmund was here.
     public class Asmund_Test_Scene : Scene
     {
+        List<GameObject> descriptionCollection = new List<GameObject>();
+        int databaseStandin = 0;
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
@@ -58,6 +60,7 @@ namespace Diablo_8_SQLite
             MakeSkill("Skill1", 
                 "Mortal Strike\n\nStrikes the enemy for \nadditional damage.", 
                 new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.77f, GraphicsSetting.Instance.ScreenSize.Y / 8.5f));
+
             MakeSkill("Skill2", 
                 "Thunder Slam\n\nDamages all nearby \nenemies and slows them\ndown.", 
                 new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.77f, GraphicsSetting.Instance.ScreenSize.Y / 2.5f));
@@ -95,11 +98,9 @@ namespace Diablo_8_SQLite
                 new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.47f, GraphicsSetting.Instance.ScreenSize.Y / 1.25f));
 
             MouseSettings.Instance.IsMouseVisible(true);
-            //go.AddComponent<SpriteRenderer>(new SpriteRenderer("Pixel", OriginPositionEnum.Mid, 1, Color.White));
-            //SpriteRenderer lol = go.GetComponent<SpriteRenderer>();
 
         }
-        List<GameObject> descriptionCollection = new List<GameObject>();
+       
         private GameObject MakeSkill(string sprite, string description, Vector2 pos)
         {
             GameObject button10 = new GameObject();
@@ -116,13 +117,16 @@ namespace Diablo_8_SQLite
             mini.Transform.Position = pos;
             ImageGUI whatever = new ImageGUI(mini.GetComponent<SpriteRenderer>(), false, false);
             mini.AddComponent<ImageGUI>(whatever);
-            whatever.SpriteRenderer.LayerDepth = 1;
-            text.LayerDepth = 1;
+            whatever.SpriteRenderer.LayerDepth = 0.1f;
+            TextGUI textMini = new TextGUI(SpriteContainer.Instance.normalFont, Color.Black, new Vector2(0.4f, 0.4f), databaseStandin.ToString()); ;
+            textMini.LayerDepth = 0.11f;
+            mini.AddComponent<TextGUI>(textMini);
             Instantiate(mini);
 
             GameObject descBox = new GameObject();
             descBox.Transform.Position = pos;
             descBox.MyParent = button10;
+            
 
             GameObject overlay = new GameObject();
             overlay.AddComponent<SpriteRenderer>();
@@ -131,22 +135,13 @@ namespace Diablo_8_SQLite
             overlay.Transform.Scale = new Vector2(200, 200);
             overlay.Transform.Position = pos + new Vector2(80, 0);
             overlay.MyParent = descBox;
-            Color color1 = new Color(Color.Gray, 0.5f);
+            overlay.GetComponent<SpriteRenderer>().LayerDepth = 0.2f;
+            Color color1 = new Color(Color.Gray, 0.8f);
             overlay.GetComponent<SpriteRenderer>().Color = color1;
-
-            //GameObject aoverlay = new GameObject();
-            //aoverlay.AddComponent<SpriteRenderer>();
-            //ImageGUI aimage = new ImageGUI(aoverlay.GetComponent<SpriteRenderer>(), false, false);
-            //aoverlay.AddComponent<ImageGUI>(aimage);
-            //aoverlay.Transform.Scale = new Vector2(20, 20);
-            //aoverlay.Transform.Position = pos + new Vector2(50, 50);
-            //Color acolor1 = new Color(Color.White, 0.4f);
-            //aoverlay.GetComponent<SpriteRenderer>().Color = acolor1;
-            //aoverlay.IsActive = true;
 
             GameObject textBox = new GameObject();
             TextGUI text = new TextGUI(SpriteContainer.Instance.normalFont, Color.Black, new Vector2(0.4f,0.4f),description);
-            text.LayerDepth = 1;
+            text.LayerDepth = 0.21f;
             textBox.Transform.Position = pos + new Vector2(80, 0);
             textBox.AddComponent<TextGUI>(text);
             textBox.MyParent = descBox;

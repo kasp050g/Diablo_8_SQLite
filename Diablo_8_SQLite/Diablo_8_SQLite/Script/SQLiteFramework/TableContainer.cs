@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace SQLiteFramework.Framework
 {
+    /// <summary>
+    /// Indeholder alle tables i databasen.
+    /// </summary>
     public class TableContainer
     {
         private IDBProvider provider = new SQLiteDatabaseProvider("Data Source=Diablo8.db; Version=3; new=true");

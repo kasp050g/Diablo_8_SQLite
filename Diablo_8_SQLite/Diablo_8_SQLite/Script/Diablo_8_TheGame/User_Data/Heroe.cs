@@ -8,20 +8,24 @@ namespace Diablo_8_SQLite
 {
     public class Heroe
     {
-        int id;
-        string name;
-        string className;
-        int xp;
-        int level;
-        int gold;
-        int strength;
-        int dexterity;
-        int vitality;
-        int energy;
-        int statsPoint;
-        int skillPoint;
-        List<Skill> skills = new List<Skill>();
-        List<SkillTree> skillTrees = new List<SkillTree>();
+        private int id;
+        private string name;
+        private string className;
+        private int xp;
+        private int level;
+        private int gold;
+        private int strength;
+        private int dexterity;
+        private int vitality;
+        private int energy;
+        private int statsPoint;
+        private int skillPoint;
+        private List<Skill> skills = new List<Skill>();
+        private List<SkillTree> skillTrees = new List<SkillTree>();
+
+        private Dictionary<string, dynamic> heroTableVariables = new Dictionary<string, dynamic>();
+        private Dictionary<string, dynamic> heroesSaveTableVariables = new Dictionary<string, dynamic>();
+        private Dictionary<string, dynamic> statTableVariables = new Dictionary<string, dynamic>();
 
         public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
@@ -37,5 +41,27 @@ namespace Diablo_8_SQLite
         public int SkillPoint { get => skillPoint; set => skillPoint = value; }
         public List<Skill> Skills { get => skills; set => skills = value; }
         public List<SkillTree> SkillTrees { get => skillTrees; set => skillTrees = value; }        
+
+        public Heroe(Dictionary<string, dynamic> heroVariables, Dictionary<string, dynamic> heroSaveVariables, Dictionary<string, dynamic> statVariables)
+        {
+            heroTableVariables = heroVariables;
+            heroesSaveTableVariables = heroSaveVariables;
+            statTableVariables = statVariables;
+
+            SetupVariables();
+        }
+
+        private void SetupVariables()
+        {
+            id = heroesSaveTableVariables["Id"]; // Skal ikke skrives sådan, skal være id = x(rowElement).Id;
+            className = heroTableVariables["Name"];
+            xp = heroesSaveTableVariables["XP"];
+            level = heroesSaveTableVariables["Level"];
+            gold = heroesSaveTableVariables["Gold"];
+            strength = statTableVariables["Strength"];
+            dexterity = statTableVariables["Dexterity"];
+            vitality = statTableVariables["Vitality"];
+            energy = statTableVariables["Energy"];
+        }
     }
 }

@@ -67,6 +67,7 @@
     <Compile Include="Script\Diablo_8_TheGame\User_Data\SkillRequired.cs" />
     <Compile Include="Script\Diablo_8_TheGame\User_Data\SkillTree.cs" />
     <Compile Include="Script\Diablo_8_TheGame\User_Data\SkillTreeSlot.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\User_Data\UserData.cs" />
     <Compile Include="Script\Generics\Singletons.cs" />
     <Compile Include="Script\MainSystem\Animations\Animation.cs" />
     <Compile Include="Script\MainSystem\Animations\AnimationContainer.cs" />

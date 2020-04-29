@@ -1,4 +1,5 @@
-﻿using Script.Generics;
+﻿using MonogameFramework;
+using Script.Generics;
 using SQLiteFramework.ExtensionMethods;
 using SQLiteFramework.Framework;
 using SQLiteFramework.Interfaces;
@@ -123,23 +124,171 @@ namespace SQLiteFramework.Framework
 
         private void AddTableContent()
         {
-            ClassTable.InsertRow(true,"Sorceress");
-            ClassTable.InsertRow(false, "Barbarian");
-            ClassTable.InsertRow(false, "Necromancer");
+            // Classes
+            IRowElement Sorceress = ClassTable.InsertRow(false, "Sorceress");
+            IRowElement Barbarian = ClassTable.InsertRow(false, "Barbarian");
+            IRowElement Necromancer = ClassTable.InsertRow(false, "Necromancer");
 
-            List<IRowElement> classes = ClassTable.GetAllRows();
-
-            foreach (IRowElement x in classes)
+            if(Sorceress != null)
             {
-                int h = x.Id;
-                Console.WriteLine(h.ToString() + ": " + x.RowElementVariables["Name"]);
+                // Start stats
+                StartStatsTable.InsertRow(false, Sorceress.Id, 5, 10, 5, 30);
+                StartStatsTable.InsertRow(false, Barbarian.Id, 15, 5, 25, 5);
+                StartStatsTable.InsertRow(false, Necromancer.Id, 10, 15, 10, 15);
+
+                // - - - Skills
+                // Sorceress
+                IRowElement SkillsTable_S1 = SkillsTable.InsertRow(false, "spell1", 5, 5, 0, 20, 0, 2, 2, "Pixel", "Pixel", Sorceress.Id);
+                IRowElement SkillsTable_S2 = SkillsTable.InsertRow(false, "spell2", 10, 10, 0, 25, 0, 2, 2, "Pixel", "Pixel", Sorceress.Id);
+                IRowElement SkillsTable_S3 = SkillsTable.InsertRow(false, "spell3", 20, 20, 0, 10, 0, 2, 2, "Pixel", "Pixel", Sorceress.Id);
+                // Barbarian
+                IRowElement SkillsTable_B1 = SkillsTable.InsertRow(false, "attack1", 5, 1, 0, 2, 1, 2, 2, "Pixel", "Pixel", Barbarian.Id);
+                IRowElement SkillsTable_B2 = SkillsTable.InsertRow(false, "attack2", 10, 2, 0, 4, 1, 2, 2, "Pixel", "Pixel", Barbarian.Id);
+                IRowElement SkillsTable_B3 = SkillsTable.InsertRow(false, "attack3", 20, 3, 0, 5, 1, 2, 2, "Pixel", "Pixel", Barbarian.Id);
+                // Necromancer
+                IRowElement SkillsTable_N1 = SkillsTable.InsertRow(false, "summon1", 5, 5, 0, 20, 0, 2, 2, "Pixel", "Pixel", Necromancer.Id);
+                IRowElement SkillsTable_N2 = SkillsTable.InsertRow(false, "summon2", 10, 10, 0, 25, 0, 2, 2, "Pixel", "Pixel", Necromancer.Id);
+                IRowElement SkillsTable_N3 = SkillsTable.InsertRow(false, "summon3", 20, 20, 0, 10, 0, 2, 2, "Pixel", "Pixel", Necromancer.Id);
+
+                // - - - SkillTree
+                IRowElement SkillTreesTable_S1 = SkillTreesTable.InsertRow(false, Sorceress.Id, "Fires");
+                IRowElement SkillTreesTable_B1 = SkillTreesTable.InsertRow(false, Barbarian.Id, "Melee");
+                IRowElement SkillTreesTable_N1 = SkillTreesTable.InsertRow(false, Necromancer.Id, "Summon");
+
+                // - - - SkillTreesTable
+                // Sorceress 
+                IRowElement SkillTreeSlotsTable_S1 = SkillTreeSlotsTable.InsertRow(false, SkillsTable_S1.Id, SkillTreesTable_S1.Id, 1, 1);
+                IRowElement SkillTreeSlotsTable_S2 = SkillTreeSlotsTable.InsertRow(false, SkillsTable_S2.Id, SkillTreesTable_S1.Id, 1, 2);
+                IRowElement SkillTreeSlotsTable_S3 = SkillTreeSlotsTable.InsertRow(false, SkillsTable_S3.Id, SkillTreesTable_S1.Id, 2, 1);
+                // Barbarian 
+                IRowElement SkillTreeSlotsTable_B1 = SkillTreeSlotsTable.InsertRow(false, SkillsTable_B1.Id, SkillTreesTable_B1.Id, 1, 1);
+                IRowElement SkillTreeSlotsTable_B2 = SkillTreeSlotsTable.InsertRow(false, SkillsTable_B2.Id, SkillTreesTable_B1.Id, 2, 1);
+                IRowElement SkillTreeSlotsTable_B3 = SkillTreeSlotsTable.InsertRow(false, SkillsTable_B3.Id, SkillTreesTable_B1.Id, 2, 2);
+                // Necromancer 
+                IRowElement SkillTreeSlotsTable_N1 = SkillTreeSlotsTable.InsertRow(false, SkillsTable_N1.Id, SkillTreesTable_N1.Id, 1, 1);
+                IRowElement SkillTreeSlotsTable_N2 = SkillTreeSlotsTable.InsertRow(false, SkillsTable_N2.Id, SkillTreesTable_N1.Id, 3, 1);
+                IRowElement SkillTreeSlotsTable_N3 = SkillTreeSlotsTable.InsertRow(false, SkillsTable_N3.Id, SkillTreesTable_N1.Id, 3, 2);
+
+                // - - - SkillRequired
+                // Sorceress
+                SkillRequiredTable.InsertRow(false, SkillsTable_S1.Id, SkillTreeSlotsTable_S3.Id, 3);
+                // Barbarian
+                SkillRequiredTable.InsertRow(false, SkillsTable_B2.Id, SkillTreeSlotsTable_B3.Id, 3);
+                // Necromancer
+                SkillRequiredTable.InsertRow(false, SkillsTable_N2.Id, SkillTreeSlotsTable_N3.Id, 3);
+
+                // - - - ItemType
+                IRowElement itemType_Sword = ItemTypeTable.InsertRow(false, "Sword");
+                IRowElement itemType_Axe = ItemTypeTable.InsertRow(false, "Axe");
+                IRowElement itemType_Wand = ItemTypeTable.InsertRow(false, "Wand");
+                IRowElement itemType_Chest = ItemTypeTable.InsertRow(false, "Chest");
+                IRowElement itemType_Helmet = ItemTypeTable.InsertRow(false, "Helmet");
+                IRowElement itemType_Boots = ItemTypeTable.InsertRow(false, "Boots");
+                IRowElement itemType_Gloves = ItemTypeTable.InsertRow(false, "Gloves");
+
+                // - - - Items
+                #region items
+                IRowElement item_Sword01 = ItemsTable.InsertRow(false,
+                    // ItemTypeID
+                    itemType_Sword.Id,
+                    // Level
+                    1,
+                    // Defense
+                    0,
+                    // MinDamage
+                    2,
+                    // MaxDamage
+                    4,
+                    // Strength
+                    2,
+                    // Dexterity
+                    0,
+                    // Virality
+                    0,
+                    // Energy
+                    0,
+                    // Health
+                    0,
+                    // Mana
+                    0,
+                    // Icon ID
+                    "Pixel",
+                    // Display ID
+                    "Pixel",
+                    // Description
+                    "this is Sword",
+                    // Gold
+                    5
+                );
+
+                IRowElement item_Axe01 = ItemsTable.InsertRow(false,
+                    // ItemTypeID
+                    itemType_Axe.Id,
+                    // Level
+                    2,
+                    // Defense
+                    0,
+                    // MinDamage
+                    5,
+                    // MaxDamage
+                    10,
+                    // Strength
+                    2,
+                    // Dexterity
+                    0,
+                    // Virality
+                    0,
+                    // Energy
+                    0,
+                    // Health
+                    50,
+                    // Mana
+                    0,
+                    // Icon ID
+                    "Pixel",
+                    // Display ID
+                    "Pixel",
+                    // Description
+                    "this is Axe",
+                    // Gold
+                    5
+                );
+
+                IRowElement item_Wand01 = ItemsTable.InsertRow(false,
+                    // ItemTypeID
+                    itemType_Wand.Id,
+                    // Level
+                    1,
+                    // Defense
+                    0,
+                    // MinDamage
+                    1,
+                    // MaxDamage
+                    8,
+                    // Strength
+                    2,
+                    // Dexterity
+                    0,
+                    // Virality
+                    0,
+                    // Energy
+                    4,
+                    // Health
+                    0,
+                    // Mana
+                    0,
+                    // Icon ID
+                    "Pixel",
+                    // Display ID
+                    "Pixel",
+                    // Description
+                    "this is Wand",
+                    // Gold
+                    5
+                );
+                #endregion
             }
 
-                
-            //for (int i = 0; i < classes.Count; i++)
-            //{
-            //    ClassTable.DeleteRow(classes[i].Id);
-            //}
         }
     }
 }

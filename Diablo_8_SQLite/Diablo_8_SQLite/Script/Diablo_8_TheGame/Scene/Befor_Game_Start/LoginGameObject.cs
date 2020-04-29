@@ -190,6 +190,12 @@ namespace Diablo_8_SQLite
                 if(user.RowElementVariables["Password"] == if02.Text)
                 {
                     errorMessage.IsActive = false;
+                    Account acc = new Account();
+                    acc.Id = user.Id;
+                    acc.Name = user.RowElementVariables["Name"];
+                    acc.Email = user.RowElementVariables["Email"];
+
+                    UserData.Instance.Account = acc;
                 }
                 else
                 {

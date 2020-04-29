@@ -36,6 +36,6 @@ namespace Diablo_8_SQLite
         public int StatsPoint { get => statsPoint; set => statsPoint = value; }
         public int SkillPoint { get => skillPoint; set => skillPoint = value; }
         public List<Skill> Skills { get => skills; set => skills = value; }
-        public List<SkillTree> SkillTrees { get => skillTrees; set => skillTrees = value; }
+        public List<SkillTree> SkillTrees { get => skillTrees; set => skillTrees = value; }        
     }
 }

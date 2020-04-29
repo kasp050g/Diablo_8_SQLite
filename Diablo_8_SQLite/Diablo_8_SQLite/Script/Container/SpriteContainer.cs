@@ -41,6 +41,7 @@ namespace MonogameFramework
 
             // The Pixel
             AddSprite(content.Load<Texture2D>("Texture/MainSystem/Pixel"), "Pixel");
+            AddSprite(content.Load<Texture2D>("TalentImages/RedPandaMini"), "Panda");
 
         }
 

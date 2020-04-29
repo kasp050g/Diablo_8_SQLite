@@ -39,6 +39,15 @@ namespace MonogameFramework
         #endregion
 
         #region Constructors
+        public ButtonGUI(Texture2D image, Texture2D imageHovering, Color color, Color colorHovering)
+        {
+            this.image = image;
+            this.imageHovering = imageHovering;
+            this.color = color;
+            this.colorHovering = colorHovering;
+            BlockGUI = true;
+            ConstructorMethod();
+        }
         public ButtonGUI(SpriteRenderer spriteRenderer, Texture2D image, Texture2D imageHovering, Color color, Color colorHovering)
         {
             this.SpriteRenderer = spriteRenderer;
@@ -47,6 +56,17 @@ namespace MonogameFramework
             this.color = color;
             this.colorHovering = colorHovering;
             BlockGUI = true;
+            ConstructorMethod();
+        }
+        public ButtonGUI(Texture2D image, Color color, Color colorHovering, Vector2 fontScale, string text)
+        {
+            this.image = image;
+            this.color = color;
+            this.colorHovering = colorHovering;
+            this.fontScale = fontScale;
+            this.text = text;
+            BlockGUI = true;
+            ConstructorMethod();
         }
         public ButtonGUI(SpriteRenderer spriteRenderer, Texture2D image, Texture2D imageHovering, Color color, Color colorHovering, SpriteFont spriteFont, Color fontColor, Vector2 fontScale, string text)
         {
@@ -56,37 +76,56 @@ namespace MonogameFramework
             this.color = color;
             this.colorHovering = colorHovering;
             this.spriteFont = spriteFont;
-            this.spriteFont = spriteFont;
             this.fontColor = fontColor;
             this.fontScale = fontScale;
             this.text = text;
             BlockGUI = true;
+            ConstructorMethod();
+        }
+        public void ConstructorMethod()
+        {
+
         }
         #endregion
+
+
 
         #region Methods 
         public override void Awake()
         {
-            if (spriteFont == null)
-            {
-                this.spriteFont = SpriteContainer.Instance.normalFont;
-            }
             base.Awake();
         }
         public override void Start()
         {
             base.Start();
+            if (SpriteRenderer == null)
+            {
+                if (GameObject.GetComponent<SpriteRenderer>() != null)
+                {
+                    SpriteRenderer = GameObject.GetComponent<SpriteRenderer>();
+                }
+                else
+                {
+                    // TODO: see if you can fix this.
+                    // so if it dont got a SpriteRenderer it can make it owns
+                    //GameObject.AddComponent<SpriteRenderer>(new SpriteRenderer(image));
+                }
+            }
+            if (spriteFont == null)
+            {
+                this.spriteFont = SpriteContainer.Instance.normalFont;
+            }
         }
 
         public override void Update()
         {
             if (MouseIsHovering)
             {
-                if(SpriteRenderer.Sprite != image)
+                if (imageHovering != null && SpriteRenderer.Sprite != imageHovering)
                 {
-                    SpriteRenderer.Sprite = image;
-                    SpriteRenderer.Color = color;
+                    SpriteRenderer.Sprite = imageHovering;
                 }
+                SpriteRenderer.Color = colorHovering;
                 if (Input.GetMouseButtonDown(MyMouseButtonsEnum.LeftButton))
                 {
                     if (OnClick != null)
@@ -97,11 +136,11 @@ namespace MonogameFramework
             }
             else
             {
-                if (SpriteRenderer.Sprite != imageHovering)
+                if (SpriteRenderer.Sprite != image)
                 {
-                    SpriteRenderer.Sprite = imageHovering;
-                    SpriteRenderer.Color = colorHovering;
+                    SpriteRenderer.Sprite = image;
                 }
+                SpriteRenderer.Color = color;
             }
             base.Update();
         }

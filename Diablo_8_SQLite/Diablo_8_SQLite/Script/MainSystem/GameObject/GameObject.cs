@@ -9,6 +9,7 @@ namespace MonogameFramework
 {
     public class GameObject
     {
+        public GameObject MyParent { get; set; }
         public bool IsActive { get; set; }
         public Scene MyScene { get; set; }
         public Transform Transform { get; private set; }
@@ -90,24 +91,26 @@ namespace MonogameFramework
 
         public void Update()
         {
-            foreach (Component component in components.Values)
-            {
-                if (component.IsEnabled)
+            if ((MyParent != null ? MyParent.IsActive == true : true))
+                foreach (Component component in components.Values)
                 {
-                    component.Update();
+                    if (component.IsEnabled)
+                    {
+                        component.Update();
+                    }
                 }
-            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (Component component in components.Values)
-            {
-                if (component.IsEnabled)
+            if ((MyParent != null ? MyParent.IsActive == true : true))
+                foreach (Component component in components.Values)
                 {
-                    component.Draw(spriteBatch);
+                    if (component.IsEnabled)
+                    {
+                        component.Draw(spriteBatch);
+                    }
                 }
-            }
         }
 
         public void Destroy()

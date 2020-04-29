@@ -148,5 +148,83 @@ namespace MonogameFramework
             //Console.WriteLine("Error: in |Class: Helper|Method: UpdateOrigin| dint work as it neeed to");
             //go.Transform.Origin = new Vector2(0,0);
         }
+
+        public static void UpdateOriginText(string text, Rectangle rectangle,SpriteFont spriteFont,Vector2 Scale, OriginPositionEnum originPositionEnum,ref Vector2 newPositon)
+        {
+            // --- Top ---
+
+            // top left
+            if (OriginPositionEnum.TopLeft == originPositionEnum)
+            {
+                var x = rectangle.X;
+                var y = rectangle.Y;
+                newPositon = new Vector2(x, y);
+            }
+            // top mid
+            else if (OriginPositionEnum.TopMid == originPositionEnum)
+            {
+                var x = (rectangle.X + (rectangle.Width / 2)) - (spriteFont.MeasureString(text).X / 2) * Scale.X;
+                var y = rectangle.Y;
+                newPositon = new Vector2(x, y);
+            }
+            // top rigth
+            else if (OriginPositionEnum.TopRight == originPositionEnum)
+            {
+                var x = (rectangle.X + (rectangle.Width / 1)) - (spriteFont.MeasureString(text).X / 1) * Scale.X;
+                var y = rectangle.Y;
+                newPositon = new Vector2(x, y);
+            }
+
+            // --- Mid ---
+
+            // mid left
+            else if (OriginPositionEnum.MidLeft == originPositionEnum)
+            {
+                var x = rectangle.X;
+                var y = (rectangle.Y + (rectangle.Height / 2)) - (spriteFont.MeasureString(text).Y / 2) * Scale.Y;
+                newPositon = new Vector2(x, y);
+            }
+            // mid 
+            else if (OriginPositionEnum.Mid == originPositionEnum)
+            {
+                var x = (rectangle.X + (rectangle.Width / 2)) - (spriteFont.MeasureString(text).X / 2) * Scale.X;
+                var y = (rectangle.Y + (rectangle.Height / 2)) - (spriteFont.MeasureString(text).Y / 2) * Scale.Y;
+                newPositon = new Vector2(x, y);
+            }
+            // mid rigth
+            else if (OriginPositionEnum.MidRight == originPositionEnum)
+            {
+                var x = (rectangle.X + (rectangle.Width / 1)) - (spriteFont.MeasureString(text).X / 1) * Scale.X;
+                var y = (rectangle.Y + (rectangle.Height / 2)) - (spriteFont.MeasureString(text).Y / 2) * Scale.Y;
+                newPositon = new Vector2(x, y);
+            }
+
+            // --- Bottom ---
+
+            // bottom left
+            else if (OriginPositionEnum.BottomLeft == originPositionEnum)
+            {
+                var x = rectangle.X;
+                var y = (rectangle.Y + (rectangle.Height / 1)) - (spriteFont.MeasureString(text).Y / 1) * Scale.Y;
+                newPositon = new Vector2(x, y);
+            }
+            // bottom mid
+            else if (OriginPositionEnum.BottomMid == originPositionEnum)
+            {
+                var x = (rectangle.X + (rectangle.Width / 2)) - (spriteFont.MeasureString(text).X / 2) * Scale.X;
+                var y = (rectangle.Y + (rectangle.Height / 1)) - (spriteFont.MeasureString(text).Y / 2) * Scale.Y;
+                newPositon = new Vector2(x, y);
+            }
+            // bottom rigth
+            else if (OriginPositionEnum.BottomRight == originPositionEnum)
+            {
+                var x = (rectangle.X + (rectangle.Width / 1)) - (spriteFont.MeasureString(text).X / 1) * Scale.X;
+                var y = (rectangle.Y + (rectangle.Height / 1)) - (spriteFont.MeasureString(text).Y / 1) * Scale.Y;
+                newPositon = new Vector2(x, y);
+            }
+
+            //Console.WriteLine("Error: in |Class: Helper|Method: UpdateOrigin| dint work as it neeed to");
+            //go.Transform.Origin = new Vector2(0,0);
+        }
     }
 }

@@ -53,17 +53,24 @@ namespace Diablo_8_SQLite
             {
                 SceneController.Instance.CurrentScene = SceneController.Instance.SceneContainer.Scenes[4];
             }
+            if (Input.GetKeyDown(Keys.D5))
+            {
+                SceneController.Instance.CurrentScene = SceneController.Instance.SceneContainer.Scenes[5];
+            }
         }
 
         public void MakeUIPicker()
         {
             GameObject go = new GameObject();
 
+            string ScneNames = "";
+            for (int i = 1; i < SceneController.Instance.SceneContainer.Scenes.Count; i++)
+            {
+                ScneNames += "\n " + i +": " + SceneController.Instance.SceneContainer.Scenes[i].Name + " ";
+            }
+
             go.AddComponent<TextGUI>(new TextGUI(SpriteContainer.Instance.normalFont, Color.Black, new Vector2(2, 2), "Click Number to Pick Scene." +
-                "\n 1: " + SceneController.Instance.SceneContainer.Scenes[1].Name + " " +
-                "\n 2: " + SceneController.Instance.SceneContainer.Scenes[2].Name + " " +
-                "\n 3: " + SceneController.Instance.SceneContainer.Scenes[3].Name + " " +
-                "\n 4: " + SceneController.Instance.SceneContainer.Scenes[4].Name + " "));
+                ScneNames));
             Instantiate(go);
         }
     }

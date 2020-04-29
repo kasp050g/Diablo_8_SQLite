@@ -122,7 +122,7 @@ namespace SQLiteFramework.Framework
 
         private void AddTableContent()
         {
-
+          //  SkillsTable.InsertRow("Mortal Strike", 25, 10, 1, 100, true, 1.1, 1.2, );
         }
     }
 }

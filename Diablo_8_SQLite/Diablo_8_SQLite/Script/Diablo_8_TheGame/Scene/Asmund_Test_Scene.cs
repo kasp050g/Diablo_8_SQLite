@@ -103,31 +103,34 @@ namespace Diablo_8_SQLite
        
         private GameObject MakeSkill(string sprite, string description, Vector2 pos)
         {
-            GameObject button10 = new GameObject();
-            button10.AddComponent<SpriteRenderer>();
-            ButtonGUI btn10 = button10.AddComponent<ButtonGUI>(new ButtonGUI(SpriteContainer.Instance.sprite[sprite], SpriteContainer.Instance.sprite[sprite], Color.White, Color.Green));
-            btn10.OnClick = () => { button10.IsActive = !button10.IsActive; };
-            button10.Transform.Scale = new Vector2(GraphicsSetting.Instance.ScreenScale.X, GraphicsSetting.Instance.ScreenScale.Y);
-            button10.Transform.Position = pos;
-            Instantiate(button10);
+            //Create Button
+            GameObject button = new GameObject();
+            button.AddComponent<SpriteRenderer>();
+            ButtonGUI btn = button.AddComponent<ButtonGUI>(new ButtonGUI(SpriteContainer.Instance.sprite[sprite], SpriteContainer.Instance.sprite[sprite], Color.White, Color.Green));
+            //btn10.OnClick = () => { button10.IsActive = !button10.IsActive; };
+            button.Transform.Scale = new Vector2(GraphicsSetting.Instance.ScreenScale.X, GraphicsSetting.Instance.ScreenScale.Y);
+            button.Transform.Position = pos;
+            Instantiate(button);
 
+            //Create NumberOverlay
             GameObject mini = new GameObject();
             mini.AddComponent<SpriteRenderer>();
             mini.Transform.Scale = new Vector2(GraphicsSetting.Instance.ScreenScale.X * 20, GraphicsSetting.Instance.ScreenScale.Y * 20);
             mini.Transform.Position = pos;
-            ImageGUI whatever = new ImageGUI(mini.GetComponent<SpriteRenderer>(), false, false);
-            mini.AddComponent<ImageGUI>(whatever);
-            whatever.SpriteRenderer.LayerDepth = 0.1f;
+            ImageGUI miniImage = new ImageGUI(mini.GetComponent<SpriteRenderer>(), false, false);
+            mini.AddComponent<ImageGUI>(miniImage);
+            miniImage.SpriteRenderer.LayerDepth = 0.1f;
             TextGUI textMini = new TextGUI(SpriteContainer.Instance.normalFont, Color.Black, new Vector2(0.4f, 0.4f), databaseStandin.ToString()); ;
             textMini.LayerDepth = 0.11f;
             mini.AddComponent<TextGUI>(textMini);
             Instantiate(mini);
 
+            //Create Parent DescriptionBox
             GameObject descBox = new GameObject();
             descBox.Transform.Position = pos;
-            descBox.MyParent = button10;
+            descBox.MyParent = button;
             
-
+            //Create Description Box overlay
             GameObject overlay = new GameObject();
             overlay.AddComponent<SpriteRenderer>();
             ImageGUI image = new ImageGUI(overlay.GetComponent<SpriteRenderer>(), false, false);
@@ -139,6 +142,7 @@ namespace Diablo_8_SQLite
             Color color1 = new Color(Color.Gray, 0.8f);
             overlay.GetComponent<SpriteRenderer>().Color = color1;
 
+            //Create Text
             GameObject textBox = new GameObject();
             TextGUI text = new TextGUI(SpriteContainer.Instance.normalFont, Color.Black, new Vector2(0.4f,0.4f),description);
             text.LayerDepth = 0.21f;
@@ -152,10 +156,7 @@ namespace Diablo_8_SQLite
 
             descriptionCollection.Add(descBox);
 
-
-            //Instantiate(aoverlay);
-
-            return button10;
+            return button;
         }
 
         private void UpdateDescription()

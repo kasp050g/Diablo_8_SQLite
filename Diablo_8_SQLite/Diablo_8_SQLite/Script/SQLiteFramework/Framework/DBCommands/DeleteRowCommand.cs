@@ -26,9 +26,9 @@ namespace SQLiteFramework.Framework
             SQLiteCommand cmd;
 
             if (IDToLookFor != 0)
-                cmd = new SQLiteCommand($"DELETE FROM {ExecuteOnTables[0].TableName} WHERE Id = {IDToLookFor}");
+                cmd = new SQLiteCommand($"DELETE FROM {ExecuteOnTables[0].TableName} WHERE Id = {IDToLookFor}", (SQLiteConnection)connection);
             else
-                cmd = new SQLiteCommand($"DELETE FROM {ExecuteOnTables[0].TableName} WHERE {ColumnToLookFor} = {StringExtension.CheckIfString(DataToLookFor)}");
+                cmd = new SQLiteCommand($"DELETE FROM {ExecuteOnTables[0].TableName} WHERE {ColumnToLookFor} = {StringExtension.CheckIfString(DataToLookFor)}", (SQLiteConnection)connection);
 
             cmd.ExecuteNonQuery();
 

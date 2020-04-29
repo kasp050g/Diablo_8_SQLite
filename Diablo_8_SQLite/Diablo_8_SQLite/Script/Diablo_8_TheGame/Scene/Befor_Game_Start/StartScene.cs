@@ -13,7 +13,7 @@ namespace Diablo_8_SQLite
     public class StartScene : Scene
     {
         LoginGameObject loginGame = new LoginGameObject();
-        MakeUserGameObject makeUser= new MakeUserGameObject();
+        MakeUserGameObject makeUser = new MakeUserGameObject();
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
@@ -23,9 +23,13 @@ namespace Diablo_8_SQLite
         {
             base.Initialize();
             MouseSettings.Instance.IsMouseVisible(true);
+
             //StartMenu();
             //loginGame.MakeGameObjects(this);
+            loginGame.MakeUserGameObject = makeUser;
+            makeUser.LoginGameObject = loginGame;
             makeUser.MakeUI(this);
+            loginGame.MakeUI(this);
         }
 
         public override void OnSwitchAwayFromThisScene()
@@ -80,7 +84,7 @@ namespace Diablo_8_SQLite
                 Color.NavajoWhite,
                 SpriteContainer.Instance.normalFont,
                 Color.Black,
-                new Vector2(1,1),
+                new Vector2(1, 1),
                 "Name Here"
                 );
             go_login.AddComponent<InputFieldGUI>(inputFieldGUI);

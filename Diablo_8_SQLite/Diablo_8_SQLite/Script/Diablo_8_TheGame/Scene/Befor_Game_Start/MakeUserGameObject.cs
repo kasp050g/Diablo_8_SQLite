@@ -14,6 +14,8 @@ namespace Diablo_8_SQLite
 {
     public class MakeUserGameObject
     {
+        LoginGameObject loginGameObject;
+
         GameObject mainGameObject = new GameObject();
 
         GameObject userInput = new GameObject();
@@ -38,13 +40,21 @@ namespace Diablo_8_SQLite
 
         GameObject errorMessage = new GameObject();
         TextGUI textGUI06;
+        public LoginGameObject LoginGameObject { get => loginGameObject; set => loginGameObject = value; }
+        public GameObject MainGameObject { get => mainGameObject; set => mainGameObject = value; }
+
+        public MakeUserGameObject()
+        {
+            
+        }
+
 
         public void MakeUI(Scene scene)
         {
-            MakeInput(ref userInput, ref sr01, ref if01, new Vector2(0, 100),"User Name");
-            MakeInput(ref emailInput, ref sr02, ref if02, new Vector2(0, 250),"Email");
-            MakeInput(ref passwordInput01, ref sr03,ref if03, new Vector2(0, 400),"Password");
-            MakeInput(ref passwordInput02, ref sr04,ref if04, new Vector2(0, 550),"Password one more");
+            MakeInput(ref userInput, ref sr01, ref if01, new Vector2(0, 100), "User Name");
+            MakeInput(ref emailInput, ref sr02, ref if02, new Vector2(0, 250), "Email");
+            MakeInput(ref passwordInput01, ref sr03, ref if03, new Vector2(0, 400), "Password");
+            MakeInput(ref passwordInput02, ref sr04, ref if04, new Vector2(0, 550), "Password one more");
 
             // --- Make User Button
             // Make Components
@@ -97,9 +107,11 @@ namespace Diablo_8_SQLite
             scene.Instantiate(passwordInput02);
             scene.Instantiate(makeUserButton);
             scene.Instantiate(errorMessage);
+
+            mainGameObject.IsActive = false;
         }
 
-        void MakeInput(ref GameObject go,ref SpriteRenderer sr,ref InputFieldGUI input,Vector2 position,string placeholderText)
+        void MakeInput(ref GameObject go, ref SpriteRenderer sr, ref InputFieldGUI input, Vector2 position, string placeholderText)
         {
             // --- Input
             // Make Components
@@ -127,7 +139,7 @@ namespace Diablo_8_SQLite
 
         void MakeUser()
         {
-            if(if03.Text != if04.Text || if03.Text == string.Empty || if04.Text == string.Empty)
+            if (if03.Text != if04.Text || if03.Text == string.Empty || if04.Text == string.Empty)
             {
                 errorMessage.IsActive = true;
                 textGUI06.Text = "Password not the same.";
@@ -136,15 +148,16 @@ namespace Diablo_8_SQLite
             {
                 errorMessage.IsActive = false;
 
-                if(Singletons.TableContainerSingleton.UsersTable.FindRow("Email", if02.Text) == null)
+                if (Singletons.TableContainerSingleton.UsersTable.FindRow("Email", if02.Text) == null)
                 {
-
                     Singletons.TableContainerSingleton.UsersTable.InsertRow(if02.Text, if02.Text, "Salt", if02.Text, 10);
-
-
+                    mainGameObject.IsActive = false;
+                    loginGameObject.MainGameObject.IsActive = true;
+                }
+                else
+                {
                     errorMessage.IsActive = true;
-                        textGUI06.Text = "That Email is in use";
-                    
+                    textGUI06.Text = "That Email is in use";
                 }
             }
         }

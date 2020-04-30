@@ -146,6 +146,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Script\Diablo_8_TheGame\Asmund_TEST\" />
     <Folder Include="Script\Diablo_8_TheGame\Kasper_TEst\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

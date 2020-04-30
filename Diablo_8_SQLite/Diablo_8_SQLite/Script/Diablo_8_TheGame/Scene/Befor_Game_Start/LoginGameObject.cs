@@ -196,6 +196,8 @@ namespace Diablo_8_SQLite
                     acc.Email = user.RowElementVariables["Email"];
 
                     UserData.Instance.Account = acc;
+                    mainGameObject.IsActive = false;
+                    // TODO: Pick Hero UI
                 }
                 else
                 {

@@ -94,6 +94,19 @@ namespace SQLiteFramework.Framework
             return (finder as FindRowCommand).OutputRow;
         }
 
+        public static List<IRowElement> FindRows(this ITable tableToLookIn, string column, dynamic data)
+        {
+            (finder as FindRowCommand).ColumnToLookFor = column;
+            (finder as FindRowCommand).DataToLookFor = data;
+
+            (finder as FindRowCommand).IDToLookFor = 0;
+
+            finder.ExecuteOnTables[0] = tableToLookIn;
+            finder.Execute();
+
+            return (finder as FindRowCommand).OutputRows;
+        }
+
         public static void Update(this ITable tableToUpdate, int id, params KeyValuePair<string, dynamic>[] valuesToOverwrite)
         {
             (updater as UpdateCommand).IdToLookFor = id;

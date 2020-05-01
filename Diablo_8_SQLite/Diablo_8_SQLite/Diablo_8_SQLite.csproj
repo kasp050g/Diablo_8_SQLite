@@ -141,6 +141,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Texture\D2\Heros\Barbarian.jpg" />
+    <Content Include="Content\Texture\D2\Heros\necrom.jpg" />
+    <Content Include="Content\Texture\D2\Heros\Sorceress.jpg" />
     <Content Include="Content\Texture\MainSystem\Pixel.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>

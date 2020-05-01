@@ -18,6 +18,11 @@ namespace Diablo_8_SQLite
         public override void Initialize()
         {
             base.Initialize();
+            Heroe test = new Heroe(1);
+            int jamen = test.Id;
+            int xp = test.Xp;
+            test.Xp += 1;
+            test.SaveHero();
         }
 
         public override void OnSwitchAwayFromThisScene()

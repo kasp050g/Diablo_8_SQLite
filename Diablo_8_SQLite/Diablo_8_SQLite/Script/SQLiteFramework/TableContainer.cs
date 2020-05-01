@@ -22,7 +22,7 @@ namespace SQLiteFramework.Framework
         public ITable ClassTable, StartStatsTable, HeroesSaveTable,
                       SkillsTable, SkillRequiredTable, SkillTreeSlotsTable,
                       SkillsSaveTable, SkillTreesTable, HeroesTable, UsersTable,
-                      ItemTypeTable, ItemsTable, InventorySlotTable;
+                      ItemTypeTable, ItemsTable, InventorySlotTable, StatsSaveTable;
 
         public TableContainer()
         {
@@ -43,6 +43,13 @@ namespace SQLiteFramework.Framework
                                         "Vitality".AsType(typeof(int)),
                                         "Energy".AsType(typeof(int)));
 
+            StatsSaveTable = new Table("StatsSave_TABLE", provider, mapper,
+                            "HeroesSaveID".AsType(typeof(int)),
+                            "Strength".AsType(typeof(int)),
+                            "Dexterity".AsType(typeof(int)),
+                            "Vitality".AsType(typeof(int)),
+                            "Energy".AsType(typeof(int)));
+
             HeroesSaveTable = new Table("HeroesSave_TABLE", provider, mapper,
                                         "HeroID".AsType(typeof(int)),
                                         "SkillPoint".AsType(typeof(int)),
@@ -58,8 +65,8 @@ namespace SQLiteFramework.Framework
                                     "Level".AsType(typeof(int)),
                                     "Range".AsType(typeof(int)),
                                     "IsMelee".AsType(typeof(bool)),
-                                    "DamageScalingParam".AsType(typeof(int)),
-                                    "ManaCostScalingParam".AsType(typeof(int)),
+                                    "DamageScalingParameter".AsType(typeof(int)),
+                                    "ManaCostScalingParameter".AsType(typeof(int)),
                                     "IconID".AsType(typeof(string)),
                                     "DisplayID".AsType(typeof(string)),
                                     "ClassID".AsType(typeof(int)));
@@ -79,6 +86,7 @@ namespace SQLiteFramework.Framework
                                         "SkillID".AsType(typeof(int)),
                                         "Levels".AsType(typeof(int)),
                                         "HeroesSaveID".AsType(typeof(int)));
+
 
             SkillTreesTable = new Table("SkillTrees_TABLE", provider, mapper,
                                         "ClassID".AsType(typeof(int)),
@@ -126,11 +134,12 @@ namespace SQLiteFramework.Framework
         {
             // Classes
             IRowElement Sorceress = ClassTable.InsertRow(false, "Sorceress");
-            IRowElement Barbarian = ClassTable.InsertRow(false, "Barbarian");
-            IRowElement Necromancer = ClassTable.InsertRow(false, "Necromancer");
 
-            if(Sorceress != null)
+            if (Sorceress != null)
             {
+                IRowElement Barbarian = ClassTable.InsertRow(false, "Barbarian");
+                IRowElement Necromancer = ClassTable.InsertRow(false, "Necromancer");
+
                 // Start stats
                 StartStatsTable.InsertRow(false, Sorceress.Id, 5, 10, 5, 30);
                 StartStatsTable.InsertRow(false, Barbarian.Id, 15, 5, 25, 5);
@@ -287,6 +296,13 @@ namespace SQLiteFramework.Framework
                     5
                 );
                 #endregion
+
+
+                // - - - Test Zone
+                IRowElement userTest = UsersTable.InsertRow(false, "1", "1", "1", "1", 1);
+                IRowElement heroTest = HeroesTable.InsertRow(false, userTest.Id, Sorceress.Id, "Test Hero");
+                IRowElement herosaveTest = HeroesSaveTable.InsertRow(false, heroTest.Id, 1, 1, 1, 0, 0);
+                IRowElement savestats = StatsSaveTable.InsertRow(false, herosaveTest.Id, 0, 0, 0, 0);
             }
 
         }

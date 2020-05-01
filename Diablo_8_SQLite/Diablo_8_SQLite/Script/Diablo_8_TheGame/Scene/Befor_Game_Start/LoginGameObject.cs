@@ -43,7 +43,7 @@ namespace Diablo_8_SQLite
 
         public LoginGameObject()
         {
-            
+
         }
         public void MakeUI(Scene scene)
         {
@@ -137,7 +137,7 @@ namespace Diablo_8_SQLite
             errorMessage.AddComponent<TextGUI>(textGUI04);
             // Modify Components
             errorMessage.MyParent = mainGameObject;
-            errorMessage.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2 , 430 * GraphicsSetting.Instance.ScreenScale.X);
+            errorMessage.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 430 * GraphicsSetting.Instance.ScreenScale.X);
             textGUI04.OriginPositionEnum = OriginPositionEnum.TopMid;
             textGUI04.LayerDepth = 0.1f;
             errorMessage.IsActive = false;
@@ -183,11 +183,11 @@ namespace Diablo_8_SQLite
             textGUI04.FontColor = Color.Red;
             textGUI04.Text = "Error: no user fount with that email / password";
 
-            IRowElement user= Singletons.TableContainerSingleton.UsersTable.FindRow("Email", if01.Text);
+            IRowElement user = Singletons.TableContainerSingleton.UsersTable.FindRow("Email", if01.Text);
 
             if (user != null)
             {
-                if(user.RowElementVariables["Password"] == if02.Text)
+                if (user.RowElementVariables["Password"] == if02.Text)
                 {
                     errorMessage.IsActive = false;
                     Account acc = new Account();
@@ -211,7 +211,7 @@ namespace Diablo_8_SQLite
 
         }
 
-         void GoToMakeUser()
+        void GoToMakeUser()
         {
             mainGameObject.IsActive = false;
             makeUserGameObject.MainGameObject.IsActive = true;

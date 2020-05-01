@@ -17,6 +17,7 @@ namespace MonogameFramework
         Vector2 fontScale = new Vector2(1, 1);
         float layerDepth = 0;
         Vector2 newPosition = new Vector2(0, 0);
+        Vector2 offsetPosition = new Vector2(0, 0);
         OriginPositionEnum originPositionEnum = OriginPositionEnum.TopLeft;
         #endregion
 
@@ -27,6 +28,7 @@ namespace MonogameFramework
         public Vector2 FontScale { get => fontScale; set => fontScale = value; }
         public float LayerDepth { get => layerDepth; set => layerDepth = value; }
         public OriginPositionEnum OriginPositionEnum { get => originPositionEnum; set => originPositionEnum = value; }
+        public Vector2 OffsetPosition { get => offsetPosition; set => offsetPosition = value; }
         public virtual Rectangle OriginRectangle
         {
             get
@@ -40,6 +42,7 @@ namespace MonogameFramework
                     );
             }
         }
+
         #endregion
 
         #region Constructors
@@ -88,7 +91,7 @@ namespace MonogameFramework
                     // String text
                     Text,
                     // Position
-                    newPosition,
+                    newPosition + OffsetPosition,
                     // Color
                     fontColor,
                     // Rotation

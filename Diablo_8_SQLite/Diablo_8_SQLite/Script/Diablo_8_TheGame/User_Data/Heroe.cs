@@ -65,7 +65,7 @@ namespace Diablo_8_SQLite
         {
             IRowElement hero_Table = Singletons.TableContainerSingleton.HeroesTable.FindRow(heroID);
             // Class
-            IRowElement class_Table = Singletons.TableContainerSingleton.HeroesTable.FindRow((int)hero_Table.RowElementVariables["ClassID"]);
+            IRowElement class_Table = Singletons.TableContainerSingleton.ClassTable.FindRow((int)hero_Table.RowElementVariables["ClassID"]);
             IRowElement StartStats_Table = Singletons.TableContainerSingleton.StartStatsTable.FindRow("ClassID", class_Table.Id);
             // Skill
             List<IRowElement> Skills_Table = Singletons.TableContainerSingleton.SkillsTable.FindRows("ClassID", class_Table.Id);

@@ -300,9 +300,14 @@ namespace SQLiteFramework.Framework
 
                 // - - - Test Zone
                 IRowElement userTest = UsersTable.InsertRow(false, "1", "1", "1", "1", 1);
-                IRowElement heroTest = HeroesTable.InsertRow(false, userTest.Id, Sorceress.Id, "Test Hero");
-                IRowElement herosaveTest = HeroesSaveTable.InsertRow(false, heroTest.Id, 1, 1, 1, 0, 0);
-                IRowElement savestats = StatsSaveTable.InsertRow(false, herosaveTest.Id, 0, 0, 0, 0);
+
+                IRowElement heroTest01 = HeroesTable.InsertRow(false, userTest.Id, Sorceress.Id, "Test Hero S");
+                IRowElement herosaveTest01 = HeroesSaveTable.InsertRow(false, heroTest01.Id, 1, 1, 1, 0, 0);
+                IRowElement savestats01 = StatsSaveTable.InsertRow(false, herosaveTest01.Id, 0, 0, 0, 0);
+
+                IRowElement heroTest02 = HeroesTable.InsertRow(false, userTest.Id, Barbarian.Id, "Test Hero B");
+                IRowElement herosaveTest02 = HeroesSaveTable.InsertRow(false, heroTest02.Id, 1, 1, 1, 0, 0);
+                IRowElement savestats02 = StatsSaveTable.InsertRow(false, herosaveTest02.Id, 0, 0, 0, 0);
             }
 
         }

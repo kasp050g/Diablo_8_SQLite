@@ -15,9 +15,10 @@ namespace Diablo_8_SQLite
     public class LoginGameObject
     {
         MakeUserGameObject makeUserGameObject;
+        HeroPick heroPick;
 
         GameObject mainGameObject = new GameObject();
-
+        Scene myScene;
 
         GameObject emailInput = new GameObject();
         SpriteRenderer sr01;
@@ -40,6 +41,7 @@ namespace Diablo_8_SQLite
 
         public MakeUserGameObject MakeUserGameObject { get => makeUserGameObject; set => makeUserGameObject = value; }
         public GameObject MainGameObject { get => mainGameObject; set => mainGameObject = value; }
+        public HeroPick HeroPick { get => heroPick; set => heroPick = value; }
 
         public LoginGameObject()
         {
@@ -47,6 +49,7 @@ namespace Diablo_8_SQLite
         }
         public void MakeUI(Scene scene)
         {
+            myScene = scene;
             // --- Main GameObject
 
 
@@ -196,8 +199,10 @@ namespace Diablo_8_SQLite
                     acc.Email = user.RowElementVariables["Email"];
 
                     UserData.Instance.Account = acc;
-                    mainGameObject.IsActive = false;
                     // TODO: Pick Hero UI
+                    heroPick.MainGameObject.IsActive = true;
+                    heroPick.MakeAllHeros();
+                    mainGameObject.IsActive = false;
                 }
                 else
                 {

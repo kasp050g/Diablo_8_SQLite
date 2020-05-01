@@ -14,6 +14,7 @@ namespace Diablo_8_SQLite
     {
         LoginGameObject loginGame = new LoginGameObject();
         MakeUserGameObject makeUser = new MakeUserGameObject();
+        HeroPick heroPick = new HeroPick();
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
@@ -25,9 +26,11 @@ namespace Diablo_8_SQLite
             MouseSettings.Instance.IsMouseVisible(true);
 
             loginGame.MakeUserGameObject = makeUser;
+            loginGame.HeroPick = heroPick;
             makeUser.LoginGameObject = loginGame;
             makeUser.MakeUI(this);
             loginGame.MakeUI(this);
+            heroPick.MakeUI(this);
         }
 
         public override void OnSwitchAwayFromThisScene()

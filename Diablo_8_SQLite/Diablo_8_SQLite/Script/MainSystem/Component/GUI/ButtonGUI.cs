@@ -39,6 +39,10 @@ namespace MonogameFramework
         #endregion
 
         #region Constructors
+        public ButtonGUI()
+        {
+
+        }
         public ButtonGUI(Texture2D image, Texture2D imageHovering, Color color, Color colorHovering)
         {
             this.image = image;

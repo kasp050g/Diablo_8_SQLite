@@ -42,8 +42,8 @@ namespace Diablo_8_SQLite
                 ref sr07,
                 ref buttonGUI07,
                 new Vector2(GraphicsSetting.Instance.ScreenSize.X, GraphicsSetting.Instance.ScreenSize.Y),
-                new Vector2(280 * GraphicsSetting.Instance.ScreenScale.X, 50 * GraphicsSetting.Instance.ScreenScale.Y),
-                "Make new Hero",
+                new Vector2(250, 50),
+                "Make new hero",
                 OriginPositionEnum.BottomRight
             );
             buttonGUI07.OnClick += () => { GoToMakeNewHero(); };
@@ -52,8 +52,8 @@ namespace Diablo_8_SQLite
 
         void GoToMakeNewHero()
         {
-            newHero.MainGameObject.IsActive = true;
             mainGameObject.IsActive = false;
+            newHero.MainGameObject.IsActive = true;
         }
 
         public void MakeAllHeros()

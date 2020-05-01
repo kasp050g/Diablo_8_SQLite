@@ -56,6 +56,7 @@
     <Compile Include="Script\Diablo_8_TheGame\Scene\Asmund_Test_Scene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\HeroPick.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\LoginGameObject.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\MakeNewHero.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\MakeUserGameObject.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\StartScene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Kasper_Test_Scene.cs" />

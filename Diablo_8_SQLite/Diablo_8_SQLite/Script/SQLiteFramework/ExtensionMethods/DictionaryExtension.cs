@@ -21,5 +21,10 @@ namespace SQLiteFramework.ExtensionMethods
             dictionary.Remove(key);
             dictionary[newKey] = value;
         }
+
+        public static Dictionary<TKey, TValue> CombineArrays<TKey, TValue>(TKey[] arrayA, TValue[] arrayB)
+        {
+            return arrayA.Zip(arrayB, (k, v) => new { k, v }).ToDictionary(kvp => kvp.k, kvp => kvp.v);
+        }
     }
 }

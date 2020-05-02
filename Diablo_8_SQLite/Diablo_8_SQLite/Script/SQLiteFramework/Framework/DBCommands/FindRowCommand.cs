@@ -13,6 +13,8 @@ namespace SQLiteFramework.Framework
     {
         public IRowElement OutputRow;
 
+        public List<IRowElement> OutputRows;
+
         public int IDToLookFor = 0;
 
         public string ColumnToLookFor;
@@ -35,7 +37,19 @@ namespace SQLiteFramework.Framework
 
             var reader = cmd.ExecuteReader();
 
-            OutputRow = ExecuteOnTables[0].Mapper.MapRowsFromReader(reader, ExecuteOnTables[0]).First();
+            // List Rows
+            try
+            { OutputRows = ExecuteOnTables[0].Mapper.MapRowsFromReader(reader, ExecuteOnTables[0]); }
+
+            catch
+            { OutputRows = null; }
+
+            // Single Row
+            try
+            { OutputRow = OutputRows.First(); }
+
+            catch
+            { OutputRow = null; }
 
             connection.Close();
         }

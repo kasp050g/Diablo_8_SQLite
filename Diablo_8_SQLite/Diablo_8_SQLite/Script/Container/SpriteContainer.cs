@@ -54,6 +54,10 @@ namespace MonogameFramework
             AddSprite(content.Load<Texture2D>("TalentImages/Skill9"), "Skill9");
             AddSprite(content.Load<Texture2D>("TalentImages/Skill10"), "Skill10");
 
+            AddSprite(content.Load<Texture2D>("Texture/D2/Heros/Barbarian"), "Barbarian");
+            AddSprite(content.Load<Texture2D>("Texture/D2/Heros/necrom"), "Necromancer");
+            AddSprite(content.Load<Texture2D>("Texture/D2/Heros/Sorceress"), "Sorceress");
+
         }
 
         private void AddSprite(Texture2D texture2D, string name)

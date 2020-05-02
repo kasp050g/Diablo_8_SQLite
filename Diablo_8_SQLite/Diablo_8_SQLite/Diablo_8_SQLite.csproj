@@ -55,13 +55,22 @@
     <Compile Include="Script\Container\SpriteContainer.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Asmund_TEST\MakeUISkillTree.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Asmund_Test_Scene.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\HeroPick.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\LoginGameObject.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\MakeNewHero.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\MakeUserGameObject.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\StartScene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Kasper_Test_Scene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Lukas_Test_Scene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\MainScene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\_Pick_Scene_Test.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\User_Data\Account.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\User_Data\Heroe.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\User_Data\Skill.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\User_Data\SkillRequired.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\User_Data\SkillTree.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\User_Data\SkillTreeSlot.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\User_Data\UserData.cs" />
     <Compile Include="Script\Generics\Singletons.cs" />
     <Compile Include="Script\MainSystem\Animations\Animation.cs" />
     <Compile Include="Script\MainSystem\Animations\AnimationContainer.cs" />
@@ -134,6 +143,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Texture\D2\Heros\Barbarian.jpg" />
+    <Content Include="Content\Texture\D2\Heros\necrom.jpg" />
+    <Content Include="Content\Texture\D2\Heros\Sorceress.jpg" />
     <Content Include="Content\Texture\MainSystem\Pixel.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>

@@ -7,6 +7,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonogameFramework;
+using Script.Generics;
+using SQLiteFramework.Framework;
+using SQLiteFramework.Interfaces;
 
 namespace Diablo_8_SQLite
 {
@@ -20,6 +23,7 @@ namespace Diablo_8_SQLite
         public override void Initialize()
         {
             base.Initialize();
+            List<IRowElement> HeroesTable = Singletons.TableContainerSingleton.UsersTable.GetAllRows();
             MakeUIPicker();
         }
 

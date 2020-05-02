@@ -17,7 +17,34 @@ namespace SQLiteFramework.Framework
         private static ICommandTable updater = new UpdateCommand();
         private static ICommandTable getAll = new GetAllRowsCommand();
 
-        public static void InsertRow(this ITable tableToInsertTo, params dynamic[] rowColumnData)
+        //public static void InsertRow(this ITable tableToInsertTo, params dynamic[] rowColumnData)
+        //{
+        //    (inserter as InsertRowCommand).RowColumnData = rowColumnData;
+        //
+        //    inserter.ExecuteOnTables[0] = tableToInsertTo;
+        //    inserter.Execute();
+        //}
+
+        public static IRowElement InsertRow(this ITable tableToInsertTo, params dynamic[] rowColumnData)
+        {
+            //InsertRow(tableToInsertTo, rowColumnData);
+            (inserter as InsertRowCommand).IsDuplicate = true;
+
+            InsertRowBase(tableToInsertTo, rowColumnData);
+
+            return (inserter as InsertRowCommand).OutputRow;
+        }
+
+        public static IRowElement InsertRow(this ITable tableToInsertTo, bool isDuplication, params dynamic[] rowColumnData)
+        {
+            (inserter as InsertRowCommand).IsDuplicate = isDuplication;
+
+            InsertRowBase(tableToInsertTo, rowColumnData);
+
+            return (inserter as InsertRowCommand).OutputRow;
+        }
+
+        private static void InsertRowBase(this ITable tableToInsertTo, params dynamic[] rowColumnData)
         {
             (inserter as InsertRowCommand).RowColumnData = rowColumnData;
 
@@ -44,9 +71,9 @@ namespace SQLiteFramework.Framework
             deleter.Execute();
         }
 
-        public static IRowElement FindRow(this ITable tableToLookIn, int ID)
+        public static IRowElement FindRow(this ITable tableToLookIn, int id)
         {
-            (finder as FindRowCommand).IDToLookFor = ID;
+            (finder as FindRowCommand).IDToLookFor = id;
 
             finder.ExecuteOnTables[0] = tableToLookIn;
             finder.Execute();
@@ -65,6 +92,19 @@ namespace SQLiteFramework.Framework
             finder.Execute();
 
             return (finder as FindRowCommand).OutputRow;
+        }
+
+        public static List<IRowElement> FindRows(this ITable tableToLookIn, string column, dynamic data)
+        {
+            (finder as FindRowCommand).ColumnToLookFor = column;
+            (finder as FindRowCommand).DataToLookFor = data;
+
+            (finder as FindRowCommand).IDToLookFor = 0;
+
+            finder.ExecuteOnTables[0] = tableToLookIn;
+            finder.Execute();
+
+            return (finder as FindRowCommand).OutputRows;
         }
 
         public static void Update(this ITable tableToUpdate, int id, params KeyValuePair<string, dynamic>[] valuesToOverwrite)

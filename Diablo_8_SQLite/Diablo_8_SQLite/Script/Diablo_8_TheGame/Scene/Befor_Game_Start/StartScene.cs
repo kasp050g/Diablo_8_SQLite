@@ -13,6 +13,10 @@ namespace Diablo_8_SQLite
     public class StartScene : Scene
     {
         LoginGameObject loginGame = new LoginGameObject();
+        MakeUserGameObject makeUser = new MakeUserGameObject();
+        HeroPick heroPick = new HeroPick();
+        MakeNewHero makeNewHero = new MakeNewHero();
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
@@ -22,8 +26,16 @@ namespace Diablo_8_SQLite
         {
             base.Initialize();
             MouseSettings.Instance.IsMouseVisible(true);
-            //StartMenu();
-            loginGame.MakeGameObjects(this);
+
+            loginGame.MakeUserGameObject = makeUser;
+            loginGame.HeroPick = heroPick;
+            makeUser.LoginGameObject = loginGame;
+            makeNewHero.HeroPick = heroPick;
+            heroPick.NewHero = makeNewHero;
+            makeUser.MakeUI(this);
+            loginGame.MakeUI(this);
+            heroPick.MakeUI(this);
+            makeNewHero.MakeUI(this);
         }
 
         public override void OnSwitchAwayFromThisScene()
@@ -43,48 +55,7 @@ namespace Diablo_8_SQLite
 
         public void StartMenu()
         {
-            // Start Menu GameObject.
-            GameObject startMenu = new GameObject();
-            Instantiate(startMenu);
 
-            // Start Game Button.
-            GameObject startGame = new GameObject();
-            SpriteRenderer srStart = startGame.AddComponent<SpriteRenderer>();
-            srStart.OriginPositionEnum = OriginPositionEnum.Mid;
-            ButtonGUI startButton = startGame.AddComponent<ButtonGUI>(new ButtonGUI
-                (
-                SpriteContainer.Instance.sprite["Pixel"],
-                Color.White,
-                Color.Red,
-                new Vector2(1, 1),
-                "Play Game"
-                )
-            {
-                OnClick = () => { startMenu.IsActive = false; }
-            });
-            startGame.Transform.Scale = new Vector2(600, 100);
-            startGame.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 150);
-            startGame.MyParent = startMenu;
-
-            Instantiate(startGame);
-
-            GameObject go_login = new GameObject();
-            SpriteRenderer sr_login = go_login.AddComponent<SpriteRenderer>();
-            sr_login.OriginPositionEnum = OriginPositionEnum.Mid;
-            InputFieldGUI inputFieldGUI = new InputFieldGUI
-                (
-                sr_login,
-                SpriteContainer.Instance.sprite["Pixel"],
-                Color.NavajoWhite,
-                SpriteContainer.Instance.normalFont,
-                Color.Black,
-                new Vector2(1,1),
-                "Name Here"
-                );
-            go_login.AddComponent<InputFieldGUI>(inputFieldGUI);
-            go_login.Transform.Scale = new Vector2(600, 100);
-            go_login.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 350);
-            Instantiate(go_login);
         }
     }
 }

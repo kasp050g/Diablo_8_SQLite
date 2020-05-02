@@ -25,6 +25,12 @@ namespace SQLiteFramework.Framework
             Id = id;
         }
 
+        public RowElement(ITable locatedInTable, int id, Dictionary<string, dynamic> variables) : this(locatedInTable, id)
+        {
+            RowElementVariables = variables;
+        }
+
+
         public override string ToString()
         {
             return $"{Id}     {RowElementVariablesToString()}";

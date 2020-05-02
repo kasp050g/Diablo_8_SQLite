@@ -5,11 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using MonogameFramework;
+using Script.Generics;
+using SQLiteFramework.Framework;
+using SQLiteFramework.Interfaces;
 
 namespace Diablo_8_SQLite
 {
     public class Kasper_Test_Scene : Scene
     {
+
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
@@ -33,6 +37,7 @@ namespace Diablo_8_SQLite
         public override void Update()
         {
             base.Update();
+
         }
     }
 }

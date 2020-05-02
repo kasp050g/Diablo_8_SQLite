@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonogameFramework;
+using Script.Generics;
+using SQLiteFramework.Framework;
+using SQLiteFramework.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +14,11 @@ namespace Diablo_8_SQLite
 {
     public class LoginGameObject
     {
-        GameObject mainGameObject = new GameObject();
+        MakeUserGameObject makeUserGameObject;
+        HeroPick heroPick;
 
+        GameObject mainGameObject = new GameObject();
+        Scene myScene;
 
         GameObject emailInput = new GameObject();
         SpriteRenderer sr01;
@@ -33,9 +39,17 @@ namespace Diablo_8_SQLite
         SpriteRenderer sr05;
         ButtonGUI buttonGUI05;
 
+        public MakeUserGameObject MakeUserGameObject { get => makeUserGameObject; set => makeUserGameObject = value; }
+        public GameObject MainGameObject { get => mainGameObject; set => mainGameObject = value; }
+        public HeroPick HeroPick { get => heroPick; set => heroPick = value; }
 
-        public void MakeGameObjects(Scene scene)
+        public LoginGameObject()
         {
+
+        }
+        public void MakeUI(Scene scene)
+        {
+            myScene = scene;
             // --- Main GameObject
 
 
@@ -126,7 +140,7 @@ namespace Diablo_8_SQLite
             errorMessage.AddComponent<TextGUI>(textGUI04);
             // Modify Components
             errorMessage.MyParent = mainGameObject;
-            errorMessage.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2 , 430 * GraphicsSetting.Instance.ScreenScale.X);
+            errorMessage.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 430 * GraphicsSetting.Instance.ScreenScale.X);
             textGUI04.OriginPositionEnum = OriginPositionEnum.TopMid;
             textGUI04.LayerDepth = 0.1f;
             errorMessage.IsActive = false;
@@ -156,7 +170,7 @@ namespace Diablo_8_SQLite
             goToMakeUser.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 600 * GraphicsSetting.Instance.ScreenScale.X);
             goToMakeUser.Transform.Scale = new Vector2(250 * GraphicsSetting.Instance.ScreenScale.X, 30 * GraphicsSetting.Instance.ScreenScale.Y);
             // TODO : make it go to make user
-            //buttonGUI05.OnClick = () => {  };
+            buttonGUI05.OnClick = () => { GoToMakeUser(); };
 
             scene.Instantiate(mainGameObject);
             scene.Instantiate(emailInput);
@@ -168,20 +182,51 @@ namespace Diablo_8_SQLite
 
         public void ClickOnLogin()
         {
-            // TODO: Get User info.
-            string email = "123";
-            string password = "123";
+            errorMessage.IsActive = false;
+            textGUI04.FontColor = Color.Red;
+            textGUI04.Text = "Error: no user fount with that email / password";
 
-            if (if01.Text == email && if02.Text == password)
+            IRowElement user = Singletons.TableContainerSingleton.UsersTable.FindRow("Email", if01.Text);
+
+            if (user != null)
             {
-                mainGameObject.IsActive = false;
+                if (user.RowElementVariables["Password"] == if02.Text)
+                {
+                    errorMessage.IsActive = false;
+                    Account acc = new Account();
+                    acc.Id = user.Id;
+                    acc.Name = user.RowElementVariables["Name"];
+                    acc.Email = user.RowElementVariables["Email"];
 
-                // TODO: Login successful
+                    UserData.Instance.Account = acc;
+                    // TODO: Pick Hero UI
+                    heroPick.MainGameObject.IsActive = true;
+                    heroPick.MakeAllHeros();
+                    mainGameObject.IsActive = false;
+                }
+                else
+                {
+                    errorMessage.IsActive = true;
+                }
             }
             else
             {
                 errorMessage.IsActive = true;
             }
+
+        }
+
+        void GoToMakeUser()
+        {
+            mainGameObject.IsActive = false;
+            makeUserGameObject.MainGameObject.IsActive = true;
+        }
+
+        public void UserWasMade()
+        {
+            textGUI04.FontColor = Color.GreenYellow;
+            textGUI04.Text = "Your ACC was made now login";
+            errorMessage.IsActive = true;
         }
     }
 }

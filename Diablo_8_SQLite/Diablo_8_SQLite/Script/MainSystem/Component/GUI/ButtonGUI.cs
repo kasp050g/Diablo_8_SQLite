@@ -24,6 +24,8 @@ namespace MonogameFramework
         string text = string.Empty;
         Vector2 fontScale = new Vector2(1, 1);
 
+        bool lastUpdate;
+        bool thisUpdate;
         #endregion
 
         #region Properties
@@ -39,6 +41,10 @@ namespace MonogameFramework
         #endregion
 
         #region Constructors
+        public ButtonGUI()
+        {
+
+        }
         public ButtonGUI(Texture2D image, Texture2D imageHovering, Color color, Color colorHovering)
         {
             this.image = image;
@@ -125,13 +131,33 @@ namespace MonogameFramework
                 {
                     SpriteRenderer.Sprite = imageHovering;
                 }
+
                 SpriteRenderer.Color = colorHovering;
-                if (Input.GetMouseButtonDown(MyMouseButtonsEnum.LeftButton))
+                if (Input.GetMouseButtonUp(MyMouseButtonsEnum.LeftButton) && lastUpdate == true)
                 {
+                    lastUpdate = false;
+                    thisUpdate = false;
                     if (OnClick != null)
                     {
                         OnClick();
                     }
+                }
+
+                if (Input.GetMouseButton(MyMouseButtonsEnum.LeftButton))
+                {
+                    if (thisUpdate == true)
+                    {
+                        lastUpdate = true;
+                    }
+                    else
+                    {
+                        lastUpdate = false;
+                    }
+                    thisUpdate = true;
+                }
+                else
+                {
+                    thisUpdate = false;
                 }
             }
             else

@@ -310,7 +310,6 @@ namespace SQLiteFramework.Framework
                 IRowElement savestats02 = StatsSaveTable.InsertRow(false, herosaveTest02.Id, 0, 0, 0, 0);
             }
 
-          //  SkillsTable.InsertRow("Mortal Strike", 25, 10, 1, 100, true, 1.1, 1.2, );
         }
     }
 }

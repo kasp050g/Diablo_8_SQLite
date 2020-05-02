@@ -214,7 +214,7 @@ namespace Diablo_8_SQLite
                     {
                         if (_saveSkills.RowElementVariables["SkillID"] == _skill.Id)
                         {
-                            Singletons.TableContainerSingleton.SkillsSaveTable.Update(id, "Levels".Pair(_skill.Level));
+                            Singletons.TableContainerSingleton.SkillsSaveTable.Update(_saveSkills.Id, "Levels".Pair(_skill.Level));
                             didUpdate = true;
                         }
                     }

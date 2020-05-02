@@ -147,17 +147,17 @@ namespace SQLiteFramework.Framework
 
                 // - - - Skills
                 // Sorceress
-                IRowElement SkillsTable_S1 = SkillsTable.InsertRow(false, "spell1", 5, 5, 0, 20, 0, 2, 2, "Pixel", "Pixel", Sorceress.Id);
-                IRowElement SkillsTable_S2 = SkillsTable.InsertRow(false, "spell2", 10, 10, 0, 25, 0, 2, 2, "Pixel", "Pixel", Sorceress.Id);
-                IRowElement SkillsTable_S3 = SkillsTable.InsertRow(false, "spell3", 20, 20, 0, 10, 0, 2, 2, "Pixel", "Pixel", Sorceress.Id);
+                IRowElement SkillsTable_S1 = SkillsTable.InsertRow(false, "spell1", 5, 5, 0, 20, 0, 2, 2, "Skill1", "Skill1", Sorceress.Id);
+                IRowElement SkillsTable_S2 = SkillsTable.InsertRow(false, "spell2", 10, 10, 0, 25, 0, 2, 2, "Skill2", "Skill2", Sorceress.Id);
+                IRowElement SkillsTable_S3 = SkillsTable.InsertRow(false, "spell3", 20, 20, 0, 10, 0, 2, 2, "Skill3", "Skill3", Sorceress.Id);
                 // Barbarian
-                IRowElement SkillsTable_B1 = SkillsTable.InsertRow(false, "attack1", 5, 1, 0, 2, 1, 2, 2, "Pixel", "Pixel", Barbarian.Id);
-                IRowElement SkillsTable_B2 = SkillsTable.InsertRow(false, "attack2", 10, 2, 0, 4, 1, 2, 2, "Pixel", "Pixel", Barbarian.Id);
-                IRowElement SkillsTable_B3 = SkillsTable.InsertRow(false, "attack3", 20, 3, 0, 5, 1, 2, 2, "Pixel", "Pixel", Barbarian.Id);
+                IRowElement SkillsTable_B1 = SkillsTable.InsertRow(false, "attack1", 5, 1, 0, 2, 1, 2, 2, "Skill4", "Skill4", Barbarian.Id);
+                IRowElement SkillsTable_B2 = SkillsTable.InsertRow(false, "attack2", 10, 2, 0, 4, 1, 2, 2, "Skill5", "Skill5", Barbarian.Id);
+                IRowElement SkillsTable_B3 = SkillsTable.InsertRow(false, "attack3", 20, 3, 0, 5, 1, 2, 2, "Skill6", "Skill6", Barbarian.Id);
                 // Necromancer
-                IRowElement SkillsTable_N1 = SkillsTable.InsertRow(false, "summon1", 5, 5, 0, 20, 0, 2, 2, "Pixel", "Pixel", Necromancer.Id);
-                IRowElement SkillsTable_N2 = SkillsTable.InsertRow(false, "summon2", 10, 10, 0, 25, 0, 2, 2, "Pixel", "Pixel", Necromancer.Id);
-                IRowElement SkillsTable_N3 = SkillsTable.InsertRow(false, "summon3", 20, 20, 0, 10, 0, 2, 2, "Pixel", "Pixel", Necromancer.Id);
+                IRowElement SkillsTable_N1 = SkillsTable.InsertRow(false, "summon1", 5, 5, 0, 20, 0, 2, 2, "Skill7", "Skill7", Necromancer.Id);
+                IRowElement SkillsTable_N2 = SkillsTable.InsertRow(false, "summon2", 10, 10, 0, 25, 0, 2, 2, "Skill8", "Skill8", Necromancer.Id);
+                IRowElement SkillsTable_N3 = SkillsTable.InsertRow(false, "summon3", 20, 20, 0, 10, 0, 2, 2, "Skill9", "Skill9", Necromancer.Id);
 
                 // - - - SkillTree
                 IRowElement SkillTreesTable_S1 = SkillTreesTable.InsertRow(false, Sorceress.Id, "Fires");

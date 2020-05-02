@@ -130,6 +130,19 @@ namespace Diablo_8_SQLite
                 skills.Add(newSkill);
             }
 
+            foreach (Skill x in skills)
+            {
+                foreach (IRowElement y in skillsSave_Table)
+                {
+                    int tmp_skillsSaveID = y.RowElementVariables["SkillID"];
+                    if (x.Id == tmp_skillsSaveID)
+                    {
+                        int tmp_skillsSaveLevel = y.RowElementVariables["Levels"];
+                        x.Level += tmp_skillsSaveLevel;
+                    }
+                }
+            }
+
             // full on skill tree
             // note to self, dont make it like this in the future.
             foreach (IRowElement skillTree in SkillTrees_Table)

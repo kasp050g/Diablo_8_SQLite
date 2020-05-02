@@ -13,6 +13,7 @@ namespace Diablo_8_SQLite
     public class Asmund_Test_Scene : Scene
     {
         List<GameObject> descriptionCollection = new List<GameObject>();
+        MakeUISkillTree function = new MakeUISkillTree();
 
         int databaseStandin = 0;
 
@@ -24,7 +25,8 @@ namespace Diablo_8_SQLite
         public override void Initialize()
         {
             base.Initialize();
-            AsmundTest();
+            //AsmundTest();
+            function.MakeSkillTree(this);
         }
 
         public override void OnSwitchAwayFromThisScene()
@@ -39,7 +41,7 @@ namespace Diablo_8_SQLite
 
         public override void Update()
         {
-            UpdateDescription();
+            //UpdateDescription();
             base.Update();
         }
         private void AsmundTest()
@@ -54,45 +56,45 @@ namespace Diablo_8_SQLite
 
             Instantiate(background);
 
-            MakeSkill("Skill1",
-                "Mortal Strike\n\nStrikes the enemy for \nadditional damage.",
-                new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.77f, GraphicsSetting.Instance.ScreenSize.Y / 8.5f));
+            //MakeSkill("Skill1",
+            //    "Mortal Strike\n\nStrikes the enemy for \nadditional damage.",
+            //    new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.77f, GraphicsSetting.Instance.ScreenSize.Y / 8.5f));
 
-            MakeSkill("Skill2",
-                "Thunder Slam\n\nDamages all nearby \nenemies and slows them\ndown.",
-                new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.77f, GraphicsSetting.Instance.ScreenSize.Y / 2.5f));
+            //MakeSkill("Skill2",
+            //    "Thunder Slam\n\nDamages all nearby \nenemies and slows them\ndown.",
+            //    new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.77f, GraphicsSetting.Instance.ScreenSize.Y / 2.5f));
 
-            MakeSkill("Skill3",
-                "Whirlwind\n\nDeals weapon damage to\nall nearby enemies.",
-                new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.77f, GraphicsSetting.Instance.ScreenSize.Y / 1.5f));
+            //MakeSkill("Skill3",
+            //    "Whirlwind\n\nDeals weapon damage to\nall nearby enemies.",
+            //    new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.77f, GraphicsSetting.Instance.ScreenSize.Y / 1.5f));
 
-            MakeSkill("Skill4",
-                "Shield Wall\n\nIncreases block value \nby 100%.",
-                new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.47f, GraphicsSetting.Instance.ScreenSize.Y / 4.1f));
+            //MakeSkill("Skill4",
+            //    "Shield Wall\n\nIncreases block value \nby 100%.",
+            //    new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.47f, GraphicsSetting.Instance.ScreenSize.Y / 4.1f));
 
-            MakeSkill("Skill5",
-                "Trueshot\n\nIncrease accuracy \nby 15%.",
-                new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.24f, GraphicsSetting.Instance.ScreenSize.Y / 8.5f));
+            //MakeSkill("Skill5",
+            //    "Trueshot\n\nIncrease accuracy \nby 15%.",
+            //    new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.24f, GraphicsSetting.Instance.ScreenSize.Y / 8.5f));
 
-            MakeSkill("Skill6",
-                "Frost Arrow\n\nArrows you fire deal \nbonus damage and \nslows the target.",
-                new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.24f, GraphicsSetting.Instance.ScreenSize.Y / 3.5f));
+            //MakeSkill("Skill6",
+            //    "Frost Arrow\n\nArrows you fire deal \nbonus damage and \nslows the target.",
+            //    new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.24f, GraphicsSetting.Instance.ScreenSize.Y / 3.5f));
 
-            MakeSkill("Skill7",
-                "Piercing Strike\n\nArrows reduces the \ntargets armor.",
-                new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.08f, GraphicsSetting.Instance.ScreenSize.Y / 2.35f));
+            //MakeSkill("Skill7",
+            //    "Piercing Strike\n\nArrows reduces the \ntargets armor.",
+            //    new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.08f, GraphicsSetting.Instance.ScreenSize.Y / 2.35f));
 
-            MakeSkill("Skill8",
-                "Multi-shot\n\nFires multiple arrows \nin one attack.",
-                new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.24f, GraphicsSetting.Instance.ScreenSize.Y / 1.25f));
+            //MakeSkill("Skill8",
+            //    "Multi-shot\n\nFires multiple arrows \nin one attack.",
+            //    new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.24f, GraphicsSetting.Instance.ScreenSize.Y / 1.25f));
 
-            MakeSkill("Skill9",
-                "Empower\n\nIncreases stats by 20%.",
-                new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.08f, GraphicsSetting.Instance.ScreenSize.Y / 1.65f));
+            //MakeSkill("Skill9",
+            //    "Empower\n\nIncreases stats by 20%.",
+            //    new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.08f, GraphicsSetting.Instance.ScreenSize.Y / 1.65f));
 
-            MakeSkill("Skill10",
-                "Tornado\n\nSummons a violent \ntornado that moves \non it's own, damaging \nand slowing down \nenemies that stand \nclose to it.",
-                new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.47f, GraphicsSetting.Instance.ScreenSize.Y / 1.25f));
+            //MakeSkill("Skill10",
+            //    "Tornado\n\nSummons a violent \ntornado that moves \non it's own, damaging \nand slowing down \nenemies that stand \nclose to it.",
+            //    new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.47f, GraphicsSetting.Instance.ScreenSize.Y / 1.25f));
 
             MouseSettings.Instance.IsMouseVisible(true);
 

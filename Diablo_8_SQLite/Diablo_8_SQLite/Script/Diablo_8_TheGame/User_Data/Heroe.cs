@@ -73,7 +73,7 @@ namespace Diablo_8_SQLite
             List<IRowElement> skillTreeSlots_Table = new List<IRowElement>();
             foreach (IRowElement item in SkillTrees_Table)
             {
-                skillTreeSlots_Table.Add(Singletons.TableContainerSingleton.SkillTreeSlotsTable.FindRow("SkillTreeID", item.Id));
+                skillTreeSlots_Table.AddRange(Singletons.TableContainerSingleton.SkillTreeSlotsTable.FindRows("SkillTreeID", item.Id));
             }
             List<IRowElement> skillRequired_Table = Singletons.TableContainerSingleton.SkillRequiredTable.GetAllRows();
             // TODO: Fix Error here if we got the time.

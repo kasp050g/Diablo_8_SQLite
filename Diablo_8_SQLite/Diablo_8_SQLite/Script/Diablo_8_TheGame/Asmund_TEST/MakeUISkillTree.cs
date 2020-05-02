@@ -46,7 +46,7 @@ namespace Diablo_8_SQLite
             SpriteRenderer sr = new SpriteRenderer(sprite);
             
             ButtonGUI btn = new ButtonGUI(sr, sprite, sprite, Color.White, Color.Green);
-            btn.OnClick = () => { skill.Level += 1; };
+            btn.OnClick = () => { skill.Level += 1; UserData.Instance.currentHero.SaveHero(); };
 
             go.AddComponent<SpriteRenderer>(sr);
             go.AddComponent<ButtonGUI>(btn);

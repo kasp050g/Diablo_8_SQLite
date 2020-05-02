@@ -36,16 +36,13 @@ namespace Diablo_8_SQLite
 
                 Skill skill = item.Skill;
                 MakeSkill(item.Skill.Icon, item.Skill.Name, pos,  skill);
-                
-
-
-                SkillRank(pos + new Vector2(0,50), skill);
+               //SkillRank(pos + new Vector2(0,50), skill);
 
             }
 
         }
 
-        private void SkillRank(Vector2 pos, Skill skill)
+        private TextGUI SkillRank(Vector2 pos, Skill skill)
         {
             //Creating objects
             GameObject go = new GameObject();
@@ -66,6 +63,8 @@ namespace Diablo_8_SQLite
            
             //Instantiate
             myScene.Instantiate(go);
+
+            return text;
         }
 
 
@@ -75,14 +74,19 @@ namespace Diablo_8_SQLite
             SpriteRenderer sr = new SpriteRenderer(sprite);
             
             ButtonGUI btn = new ButtonGUI(sr, sprite, sprite, Color.White, Color.Green);
-            btn.OnClick = () => { skill.Level += 1; UserData.Instance.currentHero.SaveHero(); };
 
             go.AddComponent<SpriteRenderer>(sr);
             go.AddComponent<ButtonGUI>(btn);
             go.Transform.Position = pos;
             myScene.Instantiate(go);
 
+            TextGUI text = SkillRank(pos + new Vector2(0, 50), skill);
+            
+            btn.OnClick = () => { skill.Level += 1; UserData.Instance.currentHero.SaveHero(); text.Text = skill.Level.ToString(); };
         }
+
+     
+
 
     }
 }

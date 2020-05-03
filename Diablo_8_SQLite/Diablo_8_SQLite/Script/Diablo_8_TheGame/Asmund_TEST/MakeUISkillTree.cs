@@ -16,11 +16,11 @@ namespace Diablo_8_SQLite
         GameObject mainGameObject = new GameObject();
         //Vector2 pos = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 0);
 
-            private void CreateTalentBackground()
+        private void CreateTalentBackground()
         {
             GameObject background = new GameObject();
             SpriteRenderer sr = new SpriteRenderer("TalentsBackground", OriginPositionEnum.TopLeft, 0.01f);
-            
+
             ImageGUI image = new ImageGUI(sr, false, false);
             background.AddComponent<SpriteRenderer>(sr);
             background.AddComponent<ImageGUI>(image);
@@ -43,7 +43,7 @@ namespace Diablo_8_SQLite
 
         private void GetHeroData()
         {
-            
+
             //mainGameObject.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 0);
             //mainGameObject.Transform.Position = pos;
             skillTrees = UserData.Instance.currentHero.SkillTrees;
@@ -55,7 +55,7 @@ namespace Diablo_8_SQLite
 
 
                 Skill skill = item.Skill;
-                MakeSkill(item.Skill.Icon, item.Skill.Name, pos,  skill);
+                MakeSkill(item.Skill.Icon, item.Skill.Name, pos, skill);
 
             }
 
@@ -65,7 +65,7 @@ namespace Diablo_8_SQLite
         {
             //Creating objects
             GameObject go = new GameObject();
-            TextGUI text = new TextGUI(SpriteContainer.Instance.normalFont, Color.Black, new Vector2(0.5f,0.5f), skill.Level.ToString());
+            TextGUI text = new TextGUI(SpriteContainer.Instance.normalFont, Color.Black, new Vector2(0.5f, 0.5f), skill.Level.ToString());
             SpriteRenderer sr = new SpriteRenderer();
             ImageGUI image = new ImageGUI(sr, false, false);
             //Modifying obects
@@ -78,15 +78,14 @@ namespace Diablo_8_SQLite
             go.AddComponent<ImageGUI>(image);
             go.AddComponent<TextGUI>(text);
             go.AddComponent<SpriteRenderer>(sr);
-           
+
             //Instantiate
             myScene.Instantiate(go);
 
             return text;
         }
 
-
-        private void MakeSkill(Texture2D sprite, string description, Vector2 pos,  Skill skill)
+        private void MakeSkill(Texture2D sprite, string description, Vector2 pos, Skill skill)
         {
             GameObject go = new GameObject();
             SpriteRenderer sr = new SpriteRenderer(sprite);
@@ -99,12 +98,8 @@ namespace Diablo_8_SQLite
             myScene.Instantiate(go);
 
             TextGUI text = SkillRank(pos + new Vector2(0, 50), skill);
-            
-            btn.OnClick = () => { skill.Level += 1; UserData.Instance.currentHero.SaveHero(); text.Text = skill.Level.ToString(); };
+
+            btn.OnClick = () => { skill.Level += 1; text.Text = skill.Level.ToString(); };
         }
-
-     
-
-
     }
 }

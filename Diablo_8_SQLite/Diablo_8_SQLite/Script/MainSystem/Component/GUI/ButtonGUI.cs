@@ -45,6 +45,16 @@ namespace MonogameFramework
         {
 
         }
+        public ButtonGUI(SpriteRenderer spriteRenderer)
+        {
+            this.SpriteRenderer = spriteRenderer;
+            this.image = spriteRenderer.Sprite;
+            this.imageHovering = spriteRenderer.Sprite;
+            this.color = spriteRenderer.Color;
+            this.colorHovering = Color.Gray;
+            BlockGUI = true;
+            ConstructorMethod();
+        }
         public ButtonGUI(Texture2D image, Texture2D imageHovering, Color color, Color colorHovering)
         {
             this.image = image;

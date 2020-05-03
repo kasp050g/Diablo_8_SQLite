@@ -46,14 +46,29 @@ namespace MonogameFramework
         #endregion
 
         #region Constructors
+        public TextGUI(string text)
+        {
+            this.spriteFont = SpriteContainer.Instance.normalFont;
+            this.fontColor = Color.Black;
+            this.fontScale = new Vector2(0.5f,0.5f);
+            this.text = text;
+
+        }
         public TextGUI(SpriteFont spriteFont, Color fontColor, Vector2 fontScale, string text)
         {
-            this.spriteFont = spriteFont;
             this.spriteFont = spriteFont;
             this.fontColor = fontColor;
             this.fontScale = fontScale;
             this.text = text;
             
+        }
+        public TextGUI(SpriteFont spriteFont, Color fontColor, Vector2 fontScale, string text,OriginPositionEnum originPositionEnum)
+        {
+            this.spriteFont = spriteFont;
+            this.fontColor = fontColor;
+            this.fontScale = fontScale;
+            this.text = text;
+            this.originPositionEnum = originPositionEnum;
         }
         public void ConstructorMethod()
         {

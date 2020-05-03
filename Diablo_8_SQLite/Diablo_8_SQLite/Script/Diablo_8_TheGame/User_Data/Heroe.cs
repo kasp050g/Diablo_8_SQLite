@@ -47,10 +47,38 @@ namespace Diablo_8_SQLite
         public int Xp { get => xp; set => xp = value; }
         public int Level { get => level; set => level = value; }
         public int Gold { get => gold; set => gold = value; }
-        public int Strength { get => strength + startstrength; set => strength = value; }
-        public int Dexterity { get => dexterity + startdexterity; set => dexterity = value; }
-        public int Vitality { get => vitality + startvitality; set => vitality = value; }
-        public int Energy { get => energy + startenergy; set => energy = value; }
+        public int Strength { get => strength; set => strength = value; }
+        public int TotalStrength
+        { 
+            get
+            {
+                return strength + startstrength;
+            }
+        }
+        public int Dexterity { get => dexterity; set => dexterity = value; }
+        public int TotalDexterity
+        {
+            get
+            {
+                return dexterity + startdexterity;
+            }
+        }
+        public int Vitality { get => vitality; set => vitality = value; }
+        public int TotalVitality
+        {
+            get
+            {
+                return vitality + startvitality;
+            }
+        }
+        public int Energy { get => energy; set => energy = value; }
+        public int TotalEnergy
+        {
+            get
+            {
+                return energy + startenergy;
+            }
+        }
         public int StatsPoint { get => statsPoint; set => statsPoint = value; }
         public int SkillPoint { get => skillPoint; set => skillPoint = value; }
         public List<Skill> Skills { get => skills; set => skills = value; }

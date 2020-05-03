@@ -54,6 +54,7 @@
     <Compile Include="Script\Container\SceneContainer.cs" />
     <Compile Include="Script\Container\SpriteContainer.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Asmund_TEST\MakeUISkillTree.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\Kasper_TEst\ShowStatsUI.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Asmund_Test_Scene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\HeroPick.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\Befor_Game_Start\LoginGameObject.cs" />
@@ -158,9 +159,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Script\Diablo_8_TheGame\Kasper_TEst\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.2\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.2\build\net40\System.Data.SQLite.Core.targets')" />

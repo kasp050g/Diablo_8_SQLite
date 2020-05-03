@@ -14,6 +14,7 @@ namespace Diablo_8_SQLite
     {
         //List<GameObject> descriptionCollection = new List<GameObject>();
         MakeUISkillTree function = new MakeUISkillTree();
+        ShowStatsUI showStatsUI = new ShowStatsUI();
 
         //int databaseStandin = 0;
 
@@ -27,6 +28,7 @@ namespace Diablo_8_SQLite
             base.Initialize();
             //AsmundTest();
             function.MakeSkillTree(this);
+            showStatsUI.MakeUI(this);
         }
 
         //public override void OnSwitchAwayFromThisScene()

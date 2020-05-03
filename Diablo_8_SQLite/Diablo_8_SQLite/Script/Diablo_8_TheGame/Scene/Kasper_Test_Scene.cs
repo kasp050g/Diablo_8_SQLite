@@ -13,7 +13,7 @@ namespace Diablo_8_SQLite
 {
     public class Kasper_Test_Scene : Scene
     {
-
+        ShowStatsUI showStatsUI = new ShowStatsUI();
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
@@ -22,6 +22,8 @@ namespace Diablo_8_SQLite
         public override void Initialize()
         {
             base.Initialize();
+            MouseSettings.Instance.IsMouseVisible(true);
+            showStatsUI.MakeUI(this);
         }
 
         public override void OnSwitchAwayFromThisScene()

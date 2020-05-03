@@ -14,6 +14,7 @@ namespace Diablo_8_SQLite
         Scene myScene;
         List<SkillTree> skillTrees = new List<SkillTree>();
         GameObject mainGameObject = new GameObject();
+        Vector2 pos = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.3f,  -50);
 
         public void MakeSkillTree(Scene scene)
         {
@@ -25,18 +26,17 @@ namespace Diablo_8_SQLite
         private void GetHeroData()
         {
             
-            mainGameObject.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 0);
+            //mainGameObject.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 0);
+            mainGameObject.Transform.Position = pos;
             skillTrees = UserData.Instance.currentHero.SkillTrees;
             foreach (SkillTreeSlot item in skillTrees[0].SkillTreeSlots)
             {
-                //TODO
-                //make skill tree button
-                Vector2 pos = new Vector2(item.Position.X * 100 * GraphicsSetting.Instance.ScreenScale.X, item.Position.Y * 100 * GraphicsSetting.Instance.ScreenScale.Y) + mainGameObject.Transform.Position;
-                
+                pos.Y += GraphicsSetting.Instance.ScreenSize.Y / 4;
+                //Vector2 pos = new Vector2(item.Position.X * 1 * GraphicsSetting.Instance.ScreenScale.X, item.Position.Y * 300 * GraphicsSetting.Instance.ScreenScale.Y) + mainGameObject.Transform.Position;
+
 
                 Skill skill = item.Skill;
                 MakeSkill(item.Skill.Icon, item.Skill.Name, pos,  skill);
-               //SkillRank(pos + new Vector2(0,50), skill);
 
             }
 

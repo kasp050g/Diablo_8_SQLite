@@ -39,6 +39,8 @@ namespace Diablo_8_SQLite
             MakeStatsButton(150, 6, "Dexterity", UserData.Instance.currentHero.TotalDexterity).OnClick += () => { UserData.Instance.currentHero.Dexterity += 1; };
             MakeStatsButton(150, 7, "Vitality", UserData.Instance.currentHero.TotalVitality).OnClick += () => { UserData.Instance.currentHero.Vitality += 1; };
             MakeStatsButton(150, 8, "Energy", UserData.Instance.currentHero.TotalEnergy).OnClick += () => { UserData.Instance.currentHero.Energy += 1; };
+
+            InfoText(300, 10, "Click on Skills button's and\nthe red + button to interact.\nclick save button to save changes");
         }
 
         public void MakeBackGround()
@@ -121,7 +123,7 @@ namespace Diablo_8_SQLite
             sr.Color = new Color(0, 0, 0, 0);
             sr.LayerDepth = 0.01f;
             textGUI.OriginPositionEnum = OriginPositionEnum.Mid;
-            textGUI.LayerDepth = 0.02f;
+            textGUI.LayerDepth = 0.1f;
 
             go.AddComponent<SpriteRenderer>(sr);
             go.AddComponent<TextGUI>(textGUI);
@@ -145,6 +147,26 @@ namespace Diablo_8_SQLite
 
             go.AddComponent<SpriteRenderer>(sr);
             go.AddComponent<ButtonGUI>(btn);
+
+            myScene.Instantiate(go);
+        }
+
+        public void InfoText(int Xpos, int Ypos, string text)
+        {
+            GameObject go = new GameObject();
+            SpriteRenderer sr = new SpriteRenderer();
+
+            TextGUI textGUI = new TextGUI(text);
+
+            go.Transform.Scale = new Vector2(100, 30);
+            go.Transform.Position = new Vector2(Xpos, Ypos);
+            sr.Color = new Color(0, 0, 0, 0);
+            sr.LayerDepth = 0.01f;
+            textGUI.OriginPositionEnum = OriginPositionEnum.TopLeft;
+            textGUI.LayerDepth = 0.1f;
+
+            go.AddComponent<SpriteRenderer>(sr);
+            go.AddComponent<TextGUI>(textGUI);
 
             myScene.Instantiate(go);
         }

@@ -51,7 +51,7 @@ namespace Diablo_8_SQLite
             {
                 // pos.Y += GraphicsSetting.Instance.ScreenSize.Y / 4;
                 //GraphicsSetting.Instance.ScreenSize.X / 2, 0
-                Vector2 pos = new Vector2((GraphicsSetting.Instance.ScreenSize.X / 2) + (item.Position.X * 200 * GraphicsSetting.Instance.ScreenScale.X), item.Position.Y * 200 * GraphicsSetting.Instance.ScreenScale.Y) + mainGameObject.Transform.Position;
+                Vector2 pos = new Vector2((GraphicsSetting.Instance.ScreenSize.X / 2) + (item.Position.X * 100 * GraphicsSetting.Instance.ScreenScale.X), item.Position.Y * 200 * GraphicsSetting.Instance.ScreenScale.Y) + mainGameObject.Transform.Position;
 
 
                 Skill skill = item.Skill;

@@ -25,6 +25,7 @@ namespace Diablo_8_SQLite
             base.Initialize();
             List<IRowElement> HeroesTable = Singletons.TableContainerSingleton.UsersTable.GetAllRows();
             MakeUIPicker();
+            SceneController.Instance.CurrentScene = SceneController.Instance.SceneContainer.Scenes[5];
         }
 
         public override void OnSwitchAwayFromThisScene()

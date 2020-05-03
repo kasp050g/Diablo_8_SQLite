@@ -107,7 +107,7 @@ namespace Diablo_8_SQLite
 
             Console.WriteLine(UserData.Instance.currentHero.ClassName);
             Console.WriteLine(UserData.Instance.currentHero.Name);
-            SceneController.Instance.CurrentScene = SceneController.Instance.SceneContainer.Scenes[0];
+            SceneController.Instance.CurrentScene = SceneController.Instance.SceneContainer.Scenes[3];
         }
 
         void DeleteHero(int id,GameObject myGameobject)

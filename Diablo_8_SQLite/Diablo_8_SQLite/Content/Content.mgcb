@@ -20,6 +20,18 @@
 /processorParam:TextureFormat=Compressed
 /build:Font/NormalFont.spritefont
 
+#begin TalentImages/5f214f82f6feeadc16627823c68726ac.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TalentImages/5f214f82f6feeadc16627823c68726ac.jpg;TalentImages/TalentsBackground.jpg
+
 #begin TalentImages/RedPandaMini.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -151,18 +163,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:TalentImages/Skill9.png
-
-#begin TalentImages/TalentsBackground.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:TalentImages/TalentsBackground.png
 
 #begin Texture/D2/Heros/Barbarian.jpg
 /importer:TextureImporter

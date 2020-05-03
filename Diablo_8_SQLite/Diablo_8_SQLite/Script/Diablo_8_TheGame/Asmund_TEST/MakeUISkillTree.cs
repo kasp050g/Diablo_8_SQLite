@@ -19,9 +19,16 @@ namespace Diablo_8_SQLite
             private void CreateTalentBackground()
         {
             GameObject background = new GameObject();
-            SpriteRenderer sr = new SpriteRenderer("TalentsBackground", OriginPositionEnum.MidRight, 0.01f);
+            SpriteRenderer sr = new SpriteRenderer("TalentsBackground", OriginPositionEnum.TopLeft, 0.01f);
+            
+            ImageGUI image = new ImageGUI(sr, false, false);
             background.AddComponent<SpriteRenderer>(sr);
+            background.AddComponent<ImageGUI>(image);
+
+            //background.Transform.Scale = new Vector2((GraphicsSetting.Instance.ScreenSize.X / sr.Sprite.Width) / 2, 1);
+
             background.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 0);
+
 
             myScene.Instantiate(background);
 
@@ -61,7 +68,6 @@ namespace Diablo_8_SQLite
             TextGUI text = new TextGUI(SpriteContainer.Instance.normalFont, Color.Black, new Vector2(0.5f,0.5f), skill.Level.ToString());
             SpriteRenderer sr = new SpriteRenderer();
             ImageGUI image = new ImageGUI(sr, false, false);
-
             //Modifying obects
             sr.LayerDepth = 0.1f;
             text.LayerDepth = 0.2f;
@@ -84,7 +90,7 @@ namespace Diablo_8_SQLite
         {
             GameObject go = new GameObject();
             SpriteRenderer sr = new SpriteRenderer(sprite);
-            
+            sr.LayerDepth = 0.05f;
             ButtonGUI btn = new ButtonGUI(sr, sprite, sprite, Color.White, Color.Green);
 
             go.AddComponent<SpriteRenderer>(sr);

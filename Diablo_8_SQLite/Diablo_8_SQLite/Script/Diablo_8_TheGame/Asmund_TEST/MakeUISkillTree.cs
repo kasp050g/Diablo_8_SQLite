@@ -14,13 +14,24 @@ namespace Diablo_8_SQLite
         Scene myScene;
         List<SkillTree> skillTrees = new List<SkillTree>();
         GameObject mainGameObject = new GameObject();
-        //Vector2 pos = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 1.3f,  -50);
+        //Vector2 pos = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 0);
+
+            private void CreateTalentBackground()
+        {
+            GameObject background = new GameObject();
+            SpriteRenderer sr = new SpriteRenderer("TalentsBackground", OriginPositionEnum.MidRight, 0.01f);
+            background.AddComponent<SpriteRenderer>(sr);
+            background.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 0);
+
+            myScene.Instantiate(background);
+
+        }
 
         public void MakeSkillTree(Scene scene)
         {
             this.myScene = scene;
             GetHeroData();
-            
+            CreateTalentBackground();
         }
 
         private void GetHeroData()
@@ -31,8 +42,9 @@ namespace Diablo_8_SQLite
             skillTrees = UserData.Instance.currentHero.SkillTrees;
             foreach (SkillTreeSlot item in skillTrees[0].SkillTreeSlots)
             {
-               // pos.Y += GraphicsSetting.Instance.ScreenSize.Y / 4;
-               Vector2 pos = new Vector2(item.Position.X * 200 * GraphicsSetting.Instance.ScreenScale.X, item.Position.Y * 200 * GraphicsSetting.Instance.ScreenScale.Y) + mainGameObject.Transform.Position;
+                // pos.Y += GraphicsSetting.Instance.ScreenSize.Y / 4;
+                //GraphicsSetting.Instance.ScreenSize.X / 2, 0
+                Vector2 pos = new Vector2((GraphicsSetting.Instance.ScreenSize.X / 2) + (item.Position.X * 200 * GraphicsSetting.Instance.ScreenScale.X), item.Position.Y * 200 * GraphicsSetting.Instance.ScreenScale.Y) + mainGameObject.Transform.Position;
 
 
                 Skill skill = item.Skill;

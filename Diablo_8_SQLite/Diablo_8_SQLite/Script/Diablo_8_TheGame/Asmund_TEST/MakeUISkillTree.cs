@@ -14,29 +14,48 @@ namespace Diablo_8_SQLite
         Scene myScene;
         List<SkillTree> skillTrees = new List<SkillTree>();
         GameObject mainGameObject = new GameObject();
+        //Vector2 pos = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 0);
+
+            private void CreateTalentBackground()
+        {
+            GameObject background = new GameObject();
+            SpriteRenderer sr = new SpriteRenderer("TalentsBackground", OriginPositionEnum.TopLeft, 0.01f);
+            
+            ImageGUI image = new ImageGUI(sr, false, false);
+            background.AddComponent<SpriteRenderer>(sr);
+            background.AddComponent<ImageGUI>(image);
+
+            //background.Transform.Scale = new Vector2((GraphicsSetting.Instance.ScreenSize.X / sr.Sprite.Width) / 2, 1);
+
+            background.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 0);
+
+
+            myScene.Instantiate(background);
+
+        }
 
         public void MakeSkillTree(Scene scene)
         {
             this.myScene = scene;
             GetHeroData();
-            
+            CreateTalentBackground();
         }
 
         private void GetHeroData()
         {
             
-            mainGameObject.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 0);
+            //mainGameObject.Transform.Position = new Vector2(GraphicsSetting.Instance.ScreenSize.X / 2, 0);
+            //mainGameObject.Transform.Position = pos;
             skillTrees = UserData.Instance.currentHero.SkillTrees;
             foreach (SkillTreeSlot item in skillTrees[0].SkillTreeSlots)
             {
-                //TODO
-                //make skill tree button
-                Vector2 pos = new Vector2(item.Position.X * 100 * GraphicsSetting.Instance.ScreenScale.X, item.Position.Y * 100 * GraphicsSetting.Instance.ScreenScale.Y) + mainGameObject.Transform.Position;
-                
+                // pos.Y += GraphicsSetting.Instance.ScreenSize.Y / 4;
+                //GraphicsSetting.Instance.ScreenSize.X / 2, 0
+                Vector2 pos = new Vector2((GraphicsSetting.Instance.ScreenSize.X / 2) + (item.Position.X * 200 * GraphicsSetting.Instance.ScreenScale.X), item.Position.Y * 200 * GraphicsSetting.Instance.ScreenScale.Y) + mainGameObject.Transform.Position;
+
 
                 Skill skill = item.Skill;
                 MakeSkill(item.Skill.Icon, item.Skill.Name, pos,  skill);
-               //SkillRank(pos + new Vector2(0,50), skill);
 
             }
 
@@ -49,7 +68,6 @@ namespace Diablo_8_SQLite
             TextGUI text = new TextGUI(SpriteContainer.Instance.normalFont, Color.Black, new Vector2(0.5f,0.5f), skill.Level.ToString());
             SpriteRenderer sr = new SpriteRenderer();
             ImageGUI image = new ImageGUI(sr, false, false);
-
             //Modifying obects
             sr.LayerDepth = 0.1f;
             text.LayerDepth = 0.2f;
@@ -72,7 +90,7 @@ namespace Diablo_8_SQLite
         {
             GameObject go = new GameObject();
             SpriteRenderer sr = new SpriteRenderer(sprite);
-            
+            sr.LayerDepth = 0.05f;
             ButtonGUI btn = new ButtonGUI(sr, sprite, sprite, Color.White, Color.Green);
 
             go.AddComponent<SpriteRenderer>(sr);

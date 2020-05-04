@@ -10,8 +10,8 @@ namespace Diablo_8_SQLite
 {
     public class ShowStatsUI
     {
-        GameObject mainGameObject = new GameObject();
-        Scene myScene;
+        private GameObject mainGameObject = new GameObject();
+        private Scene myScene;
 
         public void MakeUI(Scene myScene)
         {
@@ -19,7 +19,7 @@ namespace Diablo_8_SQLite
 
             if (UserData.Instance.currentHero == null)
             {
-                UserData.Instance.currentHero = new Heroe(1);
+                UserData.Instance.currentHero = new Heroes(1);
             }
 
             MakeBackGround();

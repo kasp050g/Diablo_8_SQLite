@@ -9,17 +9,17 @@ namespace Diablo_8_SQLite
 {
     public class Skill
     {
-        int id;
-        string name;
-        int manaCost;
-        int damage;
-        int level;
-        int range;
-        bool isMelee;
-        int damageScalingParameter;
-        int manaCostScalingParameter;
-        Texture2D icon;
-        Texture2D displayImage;
+        private int id;
+        private string name;
+        private int manaCost;
+        private int damage;
+        private int level;
+        private int range;
+        private bool isMelee;
+        private int damageScalingParameter;
+        private int manaCostScalingParameter;
+        private Texture2D icon;
+        private Texture2D displayImage;
 
         public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }

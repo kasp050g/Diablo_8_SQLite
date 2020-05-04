@@ -13,17 +13,17 @@ namespace Diablo_8_SQLite
 {
     public class MakeNewHero
     {
-        GameObject mainGameObject = new GameObject();
-        HeroPick heroPick;
-        Scene myScene;
+        private GameObject mainGameObject = new GameObject();
+        private HeroPick heroPick;
+        private Scene myScene;
 
-        GameObject nameGameObject = new GameObject();
-        SpriteRenderer sr01;
-        InputFieldGUI inputName;
+        private GameObject nameGameObject = new GameObject();
+        private SpriteRenderer sr01;
+        private InputFieldGUI inputName;
 
-        GameObject backButton = new GameObject();
-        SpriteRenderer sr07;
-        ButtonGUI buttonGUI07;
+        private GameObject backButton = new GameObject();
+        private SpriteRenderer sr07;
+        private ButtonGUI buttonGUI07;
 
         public GameObject MainGameObject { get => mainGameObject; set => mainGameObject = value; }
         public HeroPick HeroPick { get => heroPick; set => heroPick = value; }

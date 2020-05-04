@@ -9,10 +9,10 @@ namespace Diablo_8_SQLite
 {
     public class SkillTreeSlot
     {
-        int id;
-        Skill skill;
-        List<SkillRequired> skillRequireds = new List<SkillRequired>();
-        Vector2 position;
+        private int id;
+        private Skill skill;
+        private List<SkillRequired> skillRequireds = new List<SkillRequired>();
+        private Vector2 position;
 
         public int Id { get => id; set => id = value; }
         public Skill Skill { get => skill; set => skill = value; }

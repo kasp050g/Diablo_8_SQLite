@@ -66,7 +66,7 @@
     <Compile Include="Script\Diablo_8_TheGame\Scene\MainScene.cs" />
     <Compile Include="Script\Diablo_8_TheGame\Scene\_Pick_Scene_Test.cs" />
     <Compile Include="Script\Diablo_8_TheGame\User_Data\Account.cs" />
-    <Compile Include="Script\Diablo_8_TheGame\User_Data\Heroe.cs" />
+    <Compile Include="Script\Diablo_8_TheGame\User_Data\Heroes.cs" />
     <Compile Include="Script\Diablo_8_TheGame\User_Data\Skill.cs" />
     <Compile Include="Script\Diablo_8_TheGame\User_Data\SkillRequired.cs" />
     <Compile Include="Script\Diablo_8_TheGame\User_Data\SkillTree.cs" />

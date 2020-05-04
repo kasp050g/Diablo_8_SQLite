@@ -13,8 +13,8 @@ namespace Diablo_8_SQLite
     public class Asmund_Test_Scene : Scene
     {
         //List<GameObject> descriptionCollection = new List<GameObject>();
-        MakeUISkillTree function = new MakeUISkillTree();
-        ShowStatsUI showStatsUI = new ShowStatsUI();
+        private MakeUISkillTree function = new MakeUISkillTree();
+        private ShowStatsUI showStatsUI = new ShowStatsUI();
 
         //int databaseStandin = 0;
 

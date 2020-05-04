@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace SQLiteFramework.Framework
 {
     /// <summary>
-    /// Indeholder alle tables i databasen.
+    /// Contains all tables and repositories in the database.
     /// </summary>
     public class TableContainer
     {

@@ -12,10 +12,10 @@ namespace Diablo_8_SQLite
 {
     public class StartScene : Scene
     {
-        LoginGameObject loginGame = new LoginGameObject();
-        MakeUserGameObject makeUser = new MakeUserGameObject();
-        HeroPick heroPick = new HeroPick();
-        MakeNewHero makeNewHero = new MakeNewHero();
+        private LoginGameObject loginGame = new LoginGameObject();
+        private MakeUserGameObject makeUser = new MakeUserGameObject();
+        private HeroPick heroPick = new HeroPick();
+        private MakeNewHero makeNewHero = new MakeNewHero();
 
         public override void Draw(SpriteBatch spriteBatch)
         {

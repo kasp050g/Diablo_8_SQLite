@@ -14,36 +14,36 @@ namespace Diablo_8_SQLite
 {
     public class MakeUserGameObject
     {
-        LoginGameObject loginGameObject;
+        private LoginGameObject loginGameObject;
 
-        GameObject mainGameObject = new GameObject();
+        private GameObject mainGameObject = new GameObject();
 
-        GameObject userInput = new GameObject();
-        SpriteRenderer sr01;
-        InputFieldGUI if01;
+        private GameObject userInput = new GameObject();
+        private SpriteRenderer sr01;
+        private InputFieldGUI if01;
 
-        GameObject emailInput = new GameObject();
-        SpriteRenderer sr02;
-        InputFieldGUI if02;
+        private GameObject emailInput = new GameObject();
+        private SpriteRenderer sr02;
+        private InputFieldGUI if02;
 
-        GameObject passwordInput01 = new GameObject();
-        SpriteRenderer sr03;
-        InputFieldGUI if03;
+        private GameObject passwordInput01 = new GameObject();
+        private SpriteRenderer sr03;
+        private InputFieldGUI if03;
 
-        GameObject passwordInput02 = new GameObject();
-        SpriteRenderer sr04;
-        InputFieldGUI if04;
+        private GameObject passwordInput02 = new GameObject();
+        private SpriteRenderer sr04;
+        private InputFieldGUI if04;
 
-        GameObject makeUserButton = new GameObject();
-        SpriteRenderer sr05;
-        ButtonGUI buttonGUI05;
+        private GameObject makeUserButton = new GameObject();
+        private SpriteRenderer sr05;
+        private ButtonGUI buttonGUI05;
 
-        GameObject errorMessage = new GameObject();
-        TextGUI textGUI06;
+        private GameObject errorMessage = new GameObject();
+        private TextGUI textGUI06;
 
-        GameObject backButton = new GameObject();
-        SpriteRenderer sr07;
-        ButtonGUI buttonGUI07;
+        private GameObject backButton = new GameObject();
+        private SpriteRenderer sr07;
+        private ButtonGUI buttonGUI07;
 
         public LoginGameObject LoginGameObject { get => loginGameObject; set => loginGameObject = value; }
         public GameObject MainGameObject { get => mainGameObject; set => mainGameObject = value; }

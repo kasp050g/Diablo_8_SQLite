@@ -8,6 +8,11 @@ namespace SQLiteFramework.ExtensionMethods
 {
     static class TypeExtension
     {
+        /// <summary>
+        /// Converts Type to SQLite Type.
+        /// </summary>
+        /// <param name="type">Type to convert.</param>
+        /// <returns></returns>
         public static string TypeToSQLiteDataType(this Type type)
         {
             switch (Type.GetTypeCode(type))

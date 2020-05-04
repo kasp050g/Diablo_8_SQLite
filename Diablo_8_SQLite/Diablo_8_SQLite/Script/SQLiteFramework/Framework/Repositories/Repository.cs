@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace SQLiteFramework.Framework
 {
+    /// <summary>
+    /// SQLite Database Repository.
+    /// </summary>
     class Repository : IRepository
     {
         private readonly IDBProvider provider;

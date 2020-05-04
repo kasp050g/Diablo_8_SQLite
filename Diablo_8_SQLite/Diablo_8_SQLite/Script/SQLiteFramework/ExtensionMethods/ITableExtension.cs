@@ -9,6 +9,11 @@ namespace SQLiteFramework.ExtensionMethods
 {
     static class ITableExtension
     {
+        /// <summary>
+        /// Compares the IDBProvider of several tables.
+        /// </summary>
+        /// <param name="tables">Tables to compare.</param>
+        /// <returns></returns>
         public static bool CompareProviders(this ITable[] tables)
         {
             bool result = false;

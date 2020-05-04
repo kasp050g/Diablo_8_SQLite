@@ -14,30 +14,30 @@ namespace Diablo_8_SQLite
 {
     public class LoginGameObject
     {
-        MakeUserGameObject makeUserGameObject;
-        HeroPick heroPick;
+        private MakeUserGameObject makeUserGameObject;
+        private HeroPick heroPick;
 
-        GameObject mainGameObject = new GameObject();
-        Scene myScene;
+        private GameObject mainGameObject = new GameObject();
+        private Scene myScene;
 
-        GameObject emailInput = new GameObject();
-        SpriteRenderer sr01;
-        InputFieldGUI if01;
+        private GameObject emailInput = new GameObject();
+        private SpriteRenderer sr01;
+        private InputFieldGUI if01;
 
-        GameObject passwordInput = new GameObject();
-        SpriteRenderer sr02;
-        InputFieldGUI if02;
+        private GameObject passwordInput = new GameObject();
+        private SpriteRenderer sr02;
+        private InputFieldGUI if02;
 
-        GameObject loginButton = new GameObject();
-        SpriteRenderer sr03;
-        ButtonGUI buttonGUI03;
+        private GameObject loginButton = new GameObject();
+        private SpriteRenderer sr03;
+        private ButtonGUI buttonGUI03;
 
-        GameObject errorMessage = new GameObject();
-        TextGUI textGUI04;
+        private GameObject errorMessage = new GameObject();
+        private TextGUI textGUI04;
 
-        GameObject goToMakeUser = new GameObject();
-        SpriteRenderer sr05;
-        ButtonGUI buttonGUI05;
+        private GameObject goToMakeUser = new GameObject();
+        private SpriteRenderer sr05;
+        private ButtonGUI buttonGUI05;
 
         public MakeUserGameObject MakeUserGameObject { get => makeUserGameObject; set => makeUserGameObject = value; }
         public GameObject MainGameObject { get => mainGameObject; set => mainGameObject = value; }

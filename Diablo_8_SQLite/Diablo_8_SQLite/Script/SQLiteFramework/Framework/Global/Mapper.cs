@@ -10,6 +10,12 @@ namespace SQLiteFramework.Framework
 {
     class Mapper : IMapper
     {
+        /// <summary>
+        /// Converts SQLite data to C# variables.
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <param name="readFromTable"></param>
+        /// <returns>Returns a list of converted rows.</returns>
         public List<IRowElement> MapRowsFromReader(IDataReader reader, ITable readFromTable)
         {
             var result = new List<IRowElement>();

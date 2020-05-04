@@ -8,9 +8,9 @@ namespace Diablo_8_SQLite
 {
     public class SkillRequired
     {
-        int id;
-        Skill requiredSkill;
-        int requiredLevel;
+        private int id;
+        private Skill requiredSkill;
+        private int requiredLevel;
 
         public int Id { get => id; set => id = value; }
         public Skill RequiredSkill { get => requiredSkill; set => requiredSkill = value; }

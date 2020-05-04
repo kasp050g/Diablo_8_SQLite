@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SQLiteFramework.Framework
 {
+    /// <summary>
+    /// Row element in a table (ITable).
+    /// </summary>
     class RowElement : IRowElement
     {
         public ITable LocatedInTable { get; }

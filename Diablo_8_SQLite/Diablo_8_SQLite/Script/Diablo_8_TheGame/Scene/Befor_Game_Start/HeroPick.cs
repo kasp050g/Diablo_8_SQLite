@@ -13,15 +13,15 @@ namespace Diablo_8_SQLite
 {
     public class HeroPick
     {
-        GameObject mainGameObject = new GameObject();
-        MakeNewHero newHero;
-        List<GameObject> heroList = new List<GameObject>();
+        private GameObject mainGameObject = new GameObject();
+        private MakeNewHero newHero;
+        private List<GameObject> heroList = new List<GameObject>();
 
-        Scene myScene;
+        private Scene myScene;
 
-        GameObject makeHeroButton = new GameObject();
-        SpriteRenderer sr07;
-        ButtonGUI buttonGUI07;
+        private GameObject makeHeroButton = new GameObject();
+        private SpriteRenderer sr07;
+        private ButtonGUI buttonGUI07;
 
 
         public GameObject MainGameObject { get => mainGameObject; set => mainGameObject = value; }
@@ -103,7 +103,7 @@ namespace Diablo_8_SQLite
         void OnHeroPickButton(int id)
         {
             mainGameObject.IsActive = false;
-            UserData.Instance.currentHero = new Heroe(id);
+            UserData.Instance.currentHero = new Heroes(id);
 
             Console.WriteLine(UserData.Instance.currentHero.ClassName);
             Console.WriteLine(UserData.Instance.currentHero.Name);

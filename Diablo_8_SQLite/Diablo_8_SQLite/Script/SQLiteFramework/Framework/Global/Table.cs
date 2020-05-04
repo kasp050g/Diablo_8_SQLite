@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace SQLiteFramework.Framework
 {
+    /// <summary>
+    /// SQLite Database Table.
+    /// </summary>
     class Table : ITable
     {
         public IDBProvider Provider { get; }

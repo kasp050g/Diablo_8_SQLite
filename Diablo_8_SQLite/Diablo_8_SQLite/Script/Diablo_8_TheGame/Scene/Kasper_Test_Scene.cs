@@ -13,7 +13,7 @@ namespace Diablo_8_SQLite
 {
     public class Kasper_Test_Scene : Scene
     {
-        ShowStatsUI showStatsUI = new ShowStatsUI();
+        private ShowStatsUI showStatsUI = new ShowStatsUI();
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);

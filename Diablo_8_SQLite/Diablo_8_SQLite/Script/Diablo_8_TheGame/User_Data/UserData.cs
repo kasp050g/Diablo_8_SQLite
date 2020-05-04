@@ -24,6 +24,6 @@ namespace Diablo_8_SQLite
         #endregion
 
         public Account Account { get; set; }
-        public Heroe currentHero { get; set; }
+        public Heroes currentHero { get; set; }
     }
 }

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Diablo_8_SQLite
 {
-    public class Heroe
+    public class Heroes
     {
         private int id;
         private string name;
@@ -84,12 +84,12 @@ namespace Diablo_8_SQLite
         public List<Skill> Skills { get => skills; set => skills = value; }
         public List<SkillTree> SkillTrees { get => skillTrees; set => skillTrees = value; }
 
-        public Heroe()
+        public Heroes()
         {
 
         }
 
-        public Heroe(int heroID)
+        public Heroes(int heroID)
         {
             IRowElement hero_Table = Singletons.TableContainerSingleton.HeroesTable.FindRow(heroID);
             // Class
